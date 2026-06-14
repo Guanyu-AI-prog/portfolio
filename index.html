@@ -207,6 +207,43 @@
             </div>
         </div>
 
+        <!-- Pure Python RAG -->
+        <div class="project-card">
+            <h3>⚡ 纯Python RAG系统（无框架依赖）</h3>
+            <p>从零实现完整 RAG 链路，不依赖 LangChain 框架。包含文档加载、分类切分、向量+BM25混合检索、Rerank重排序、LLM生成全链路。代码仅 954 行，比 LangChain Agent 方案<span class="highlight">快 65.7%</span>，通过率提升 10%。</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="num">94.7分</div>
+                    <div class="label">综合得分</div>
+                </div>
+                <div class="stat">
+                    <div class="num">96.7%</div>
+                    <div class="label">通过率</div>
+                </div>
+                <div class="stat">
+                    <div class="num">6.87s</div>
+                    <div class="label">平均响应</div>
+                </div>
+                <div class="stat">
+                    <div class="num">0%</div>
+                    <div class="label">幻觉率</div>
+                </div>
+            </div>
+            
+            <p><strong>核心设计：</strong></p>
+            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
+                <li>分类切分策略：Q&A 用小块(250字)、套餐详情用大块(500字)、默认 300字</li>
+                <li>向量 + BM25 并行检索 + Rerank 重排序，三路融合</li>
+                <li>查询改写 + 意图分类 + 查询扩展（推荐/对比/事实三种策略）</li>
+                <li>嵌入缓存 + BM25 查询缓存，重复查询零延迟</li>
+            </ul>
+            
+            <div class="tech-tags">
+                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>Rerank</span><span>DeepSeek</span><span>零框架依赖</span>
+            </div>
+        </div>
+
         <!-- RPA -->
         <div class="project-card">
             <h3>🤖 运营商套餐数据自动采集</h3>
