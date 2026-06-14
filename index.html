@@ -230,8 +230,36 @@
     </div>
 </section>
 
-<!-- Skills -->
+<!-- Insights -->
 <section style="background: #f8f9fa;">
+    <div class="container">
+        <h2>技术洞察</h2>
+        <p style="color: #666; margin-bottom: 24px; font-size: 0.95rem;">从实践中提炼的关键认知，不是"会用工具"，而是"理解边界"</p>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 BM25 混合检索为什么能从 74% 拉到 98.7%？</h3>
+            <p>向量检索擅长语义匹配（"便宜的套餐"→"低月租方案"），但遇到精确关键词（"实付69元"、"违约金30元"）时反而模糊。BM25 的精确关键词匹配恰好弥补了这个短板。两者不是替代关系，而是互补。<strong>关键认知：混合检索不是"加一个保险"，而是解决不同粒度的召回问题。</strong></p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 小数据不该用 RAG</h3>
+            <p>用 51 篇个人随笔做 RAG 实验时发现：数据量小（几万字以内），直接塞进 LLM 上下文窗口效果反而比 RAG 更好。RAG 的切块-检索-拼接过程会丢失上下文关联。<strong>关键认知：RAG 是大数据场景的工具，小数据直接喂全文才是最优解。</strong></p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 评测题可能存在"过拟合"</h3>
+            <p>60 道测试题得分率 97.7%、零幻觉——但测试题是基于知识库内容设计的，等于"开卷考试"。真正的验证需要线上真实用户提问。主动识别这个局限性，比追求高分更有价值。<strong>关键认知：评测的目的是暴露问题，不是证明自己厉害。</strong></p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 三框架对比的真实发现</h3>
+            <p>Dify Agent 质量最高（97.3%）但响应慢（9s），LangChain RAG 最快（2.86s）但质量略低（91.6%），LangChain Agent 兼顾（94.9% + 14.65s）。没有"最好的框架"，只有"最适合场景的框架"。<strong>关键认知：技术选型的核心是理解 trade-off，不是追新。</strong></p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills -->
+<section>
     <div class="container">
         <h2>技术能力</h2>
         <div class="skills-grid">
