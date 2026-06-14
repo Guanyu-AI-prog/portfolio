@@ -255,6 +255,11 @@
             <h3 style="font-size: 1.1rem;">💡 三框架对比的真实发现</h3>
             <p>Dify Agent 质量最高（97.3%）但响应慢（9s），LangChain RAG 最快（2.86s）但质量略低（91.6%），LangChain Agent 兼顾（94.9% + 14.65s）。没有"最好的框架"，只有"最适合场景的框架"。<strong>关键认知：技术选型的核心是理解 trade-off，不是追新。</strong></p>
         </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 纯 RAG 有天花板，突破靠"加一层"</h3>
+            <p>花了三周在纯 RAG 上调参数，chunk_size、检索权重、prompt 改了个遍，召回率始终上不去。后来在 Chatflow 里多加了一个检索节点（无心之举），召回率直接跳到八九十。<strong>关键认知：当一个维度的优化到极限时，突破往往来自架构层面的改变，而不是参数微调。</strong></p>
+        </div>
     </div>
 </section>
 
