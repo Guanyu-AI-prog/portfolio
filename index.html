@@ -233,7 +233,7 @@
             
             <p><strong>核心设计：</strong></p>
             <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
-                <li>分类切分策略：Q&A 用小块(250字)、套餐详情用大块(500字)、默认 300字</li>
+                <li>分类切分策略：Q&amp;A 用小块(250字)、套餐详情用大块(500字)、默认 300字</li>
                 <li>向量 + BM25 并行检索 + Rerank 重排序，三路融合</li>
                 <li>查询改写 + 意图分类 + 查询扩展（推荐/对比/事实三种策略）</li>
                 <li>嵌入缓存 + BM25 查询缓存，重复查询零延迟</li>
@@ -262,6 +262,68 @@
             
             <div class="tech-tags">
                 <span>Playwright</span><span>Python</span><span>RPA</span><span>数据采集</span>
+            </div>
+        </div>
+
+        <!-- WEB端集成 -->
+        <div class="project-card">
+            <h3>🌐 RAG 系统 WEB 端集成</h3>
+            <p>将 RAG 系统集成到 Web 界面，通过公网 IP 实现远程访问。用户可通过浏览器直接与知识库对话，无需本地部署。</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="num">公网 IP</div>
+                    <div class="label">远程访问</div>
+                </div>
+                <div class="stat">
+                    <div class="num">Web UI</div>
+                    <div class="label">可视化界面</div>
+                </div>
+            </div>
+            
+            <div class="tech-tags">
+                <span>FastAPI</span><span>公网部署</span><span>Web UI</span>
+            </div>
+        </div>
+
+        <!-- 四个月RAG实战历程 -->
+        <div class="project-card">
+            <h3>📅 四个月 RAG 实战历程</h3>
+            <p>从 2026.02 到 2026.06，完成从学习到三套系统落地的完整周期。代码实现借助 AI 辅助完成，但每一条检索策略的选择、每一个参数的调优、每一次架构的升级，都来自实际踩坑后的判断。</p>
+            
+            <div style="margin-top: 16px;">
+                <p style="margin-bottom: 8px;"><strong>第一阶段：观望与学习（2月）</strong></p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">基础概念学习，了解 RAG 原理、向量检索、Embedding 模型等基础概念，观望各平台方案，为动手做准备。</p>
+                
+                <p style="margin-bottom: 8px;"><strong>第二阶段：动手搭建（3.20 起）</strong></p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">• <strong>3.20</strong> — 第一个 RAG：Cherry Studio 本地搭建，8GB 内存跑 bge-m3，CPU 99%，首次 RAG 对话成功。发现：基础搭建只是开始，检索生成才是灵魂。</p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">• <strong>3.25 — 4.2</strong> — 平台探索期：5 个平台横向对比。腾讯云 ADP（幻觉严重）→ AnythingLLM（本地受限）→ LangChain（毛坯房）→ Dify（最终选择）。每个平台都教会了不同的东西。</p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">• <strong>4.2</strong> — 文档编码之战。批量转换，PowerShell 乱码、Python 失败、VS Code 清空内容，最终用两步转换法解决。数据清洗是 RAG 的地基。</p>
+                
+                <p style="margin-bottom: 8px;"><strong>第三阶段：调优突破（4.4 — 4.13）</strong></p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">• <strong>纯 RAG 的天花板</strong> — 分块大小、overlap、相似度阈值反复调参，发现单靠参数调优无法突破。领悟：RAG 的核心矛盾是召回率 vs 准确率的平衡。</p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">• <strong>突破：ChatFlow 三检索节点架构</strong> — 加入第三个知识检索节点（Q&A 知识库），召回率从 ~60% 跃升到 ~85%。这是最重要的架构决策。</p>
+                
+                <p style="margin-bottom: 8px;"><strong>第四阶段：纯代码实现（5月）</strong></p>
+                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">三套不同架构的 RAG 系统：电信套餐（规则驱动）/ 王小波文学（父子分块）/ 英文学术论文（LangGraph 条件路由）</p>
+                
+                <p style="margin-bottom: 8px;"><strong>第五阶段：混合部署 + 持续迭代（5—6月）</strong></p>
+                <p style="color: #666; font-size: 0.95rem;">Dify + 本地向量库 + API 模型的混合架构，vLLM 本地模型部署探索。</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat">
+                    <div class="num">5+</div>
+                    <div class="label">平台探索</div>
+                </div>
+                <div class="stat">
+                    <div class="num">3</div>
+                    <div class="label">套系统落地</div>
+                </div>
+                <div class="stat">
+                    <div class="num">4个月</div>
+                    <div class="label">实战迭代</div>
+                </div>
             </div>
         </div>
     </div>
@@ -296,6 +358,68 @@
         <div class="project-card">
             <h3 style="font-size: 1.1rem;">💡 纯 RAG 有天花板，突破靠"加一层"</h3>
             <p>花了三周在纯 RAG 上调参数，chunk_size、检索权重、prompt 改了个遍，召回率始终上不去。后来在 Chatflow 里多加了一个检索节点（无心之举），召回率直接跳到八九十。<strong>关键认知：当一个维度的优化到极限时，突破往往来自架构层面的改变，而不是参数微调。</strong></p>
+        </div>
+        
+        <!-- PDF新增：关键经验总结 -->
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 检索 > 生成</h3>
+            <p>RAG 的核心不是模型，而是检索。<strong>检索不到 → 一定幻觉。</strong>Prompt 无法弥补检索缺陷。80% 的优化精力应该花在检索侧。</p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 数据质量决定上限</h3>
+            <p>结构化 > 非结构化，一致性 > 数量。文档编码（ANSI→UTF-8）、格式统一、Q&A 增强，这些"脏活"才是决定 RAG 质量的关键。</p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 工程 > 算法</h3>
+            <p>部署、存储、性能、环境配置、编码转换 —— 这些工程问题占据了 60% 的时间。解决它们的能力才是落地 RAG 的关键。</p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 切分策略因场景而异</h3>
+            <p>Q&A 类用小块（250字）、详情类用大块（500字）、文学用父子层级、学术用双粒度。<strong>没有万能切分，只有最适合的切分。</strong></p>
+        </div>
+        
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">💡 平衡而非最优化</h3>
+            <p>召回率 vs 准确率 vs 幻觉率是三角制衡。TopK=3~5、Score 阈值 0.6~0.7、严格 Prompt + 拒答机制，接受"部分问题不回答"比"编造答案"好。</p>
+        </div>
+        
+        <!-- PDF新增：RAG评估标准 -->
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">📊 RAG 评估标准</h3>
+            <p>在四个月的实践中，总结出一套可量化的 RAG 质量评估框架：</p>
+            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
+                <li>召回率 ≥ 80%</li>
+                <li>准确率 ≥ 80%</li>
+                <li>幻觉率 ≤ 20%</li>
+                <li>完整性 ≥ 70%</li>
+            </ul>
+            <p><strong>评估方法论：</strong>问 10 个问题，2 个没召回可以接受，2 个答错可以接受，但编造不能接受。所以引入"可回答性判断"——生成前先判断知识库是否有答案，无答案直接拒答。<strong>宁可不答，不可答错。</strong></p>
+        </div>
+        
+        <!-- PDF新增：技术栈全景 -->
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">🛠️ 技术栈全景</h3>
+            <p style="margin-bottom: 12px;"><strong>框架 & 平台：</strong>Dify, AnythingLLM, Cherry Studio, LangChain, LangGraph</p>
+            <p style="margin-bottom: 12px;"><strong>向量数据库：</strong>ChromaDB, Dify 内置</p>
+            <p style="margin-bottom: 12px;"><strong>嵌入模型：</strong>BGE-M3, BGE-Large-ZH</p>
+            <p style="margin-bottom: 12px;"><strong>重排序：</strong>BGE-Reranker-v2-M3</p>
+            <p style="margin-bottom: 12px;"><strong>大语言模型：</strong>DeepSeek R1, MiniMax, MiMo, SiliconFlow API</p>
+            <p style="margin-bottom: 12px;"><strong>推理引擎：</strong>Ollama, vLLM, API 调用</p>
+            <p><strong>部署环境：</strong>Ubuntu 云服务器，公网 IP 部署，Docker 用于 Dify 环境</p>
+        </div>
+        
+        <!-- PDF新增：后续规划 -->
+        <div class="project-card">
+            <h3 style="font-size: 1.1rem;">🚀 后续规划</h3>
+            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
+                <li><strong>Agentic RAG：</strong>用 LangGraph Agent 实现自反思检索（plan → retrieve → reflect → generate 循环）</li>
+                <li><strong>本地模型部署：</strong>vLLM + GPU 环境下的本地大模型推理</li>
+                <li><strong>评估自动化：</strong>构建标准评测集，量化对比不同检索策略的召回率/准确率</li>
+                <li><strong>实时数据接入：</strong>移动官网套餐实时查询（Agent 工具调用模式）</li>
+            </ul>
         </div>
     </div>
 </section>
@@ -332,7 +456,7 @@
             </div>
             <div class="skill-item">
                 <h4>Linux 服务器运维</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Nginx · Docker · Systemd · 部署自动化</p>
+                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Ubuntu 云服务器 · 公网部署 · 环境配置</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 70%"></div></div>
             </div>
         </div>
