@@ -40,6 +40,7 @@
         /* Hero */
         .hero {
             padding: 100px 24px 80px; text-align: center;
+            background: radial-gradient(ellipse at 50% 0%, rgba(94,106,210,0.08) 0%, transparent 60%);
         }
         .hero h1 {
             font-size: 48px; font-weight: 510; color: #f7f8f8;
@@ -71,12 +72,17 @@
 
         /* Project Cards */
         .project-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(94,106,210,0.2);
             border-radius: 12px; padding: 32px;
-            margin-bottom: 16px; transition: background 0.2s;
+            margin-bottom: 16px; transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(94,106,210,0.08), inset 0 1px 0 rgba(94,106,210,0.15);
         }
-        .project-card:hover { background: rgba(255,255,255,0.04); }
+        .project-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(94,106,210,0.4);
+            box-shadow: 0 0 25px rgba(94,106,210,0.15), 0 0 50px rgba(94,106,210,0.08), inset 0 1px 0 rgba(94,106,210,0.25);
+        }
         .project-card h3 {
             font-size: 17px; font-weight: 590; color: #f7f8f8;
             letter-spacing: -0.204px; margin-bottom: 12px;
@@ -134,10 +140,15 @@
 
         /* Insight cards */
         .insight-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(94,106,210,0.15);
             border-radius: 8px; padding: 24px;
             margin-bottom: 8px;
+            box-shadow: 0 0 10px rgba(94,106,210,0.06), inset 0 1px 0 rgba(94,106,210,0.1);
+        }
+        .insight-card:hover {
+            border-color: rgba(94,106,210,0.3);
+            box-shadow: 0 0 20px rgba(94,106,210,0.12), inset 0 1px 0 rgba(94,106,210,0.2);
         }
         .insight-card h4 {
             font-size: 15px; font-weight: 590; color: #f7f8f8;
@@ -149,9 +160,15 @@
         /* Skills grid */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
         .skill-item {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(94,106,210,0.15);
             border-radius: 8px; padding: 20px;
+            box-shadow: 0 0 10px rgba(94,106,210,0.06), inset 0 1px 0 rgba(94,106,210,0.1);
+            transition: all 0.3s;
+        }
+        .skill-item:hover {
+            border-color: rgba(94,106,210,0.3);
+            box-shadow: 0 0 20px rgba(94,106,210,0.12), inset 0 1px 0 rgba(94,106,210,0.2);
         }
         .skill-item h4 {
             font-size: 14px; font-weight: 590; color: #f7f8f8;
