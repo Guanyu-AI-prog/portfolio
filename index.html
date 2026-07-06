@@ -4,136 +4,265 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>郑裕坚 - AI应用工程师</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #333; line-height: 1.6; }
-        
-        /* Hero */
-        .hero { 
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); 
-            color: white; text-align: center; padding: 100px 20px; 
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            color: #d0d6e0; background: #08090a; line-height: 1.6;
+            font-feature-settings: 'cv01', 'ss03';
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-        .hero p { font-size: 1.3rem; opacity: 0.9; max-width: 600px; margin: 0 auto; }
-        .hero .tag {
-            display: inline-block; background: rgba(255,255,255,0.15);
-            padding: 6px 16px; border-radius: 20px; margin: 10px 5px; font-size: 0.95rem;
-        }
-        
+
         /* Container */
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Section */
-        section { padding: 60px 0; }
-        section h2 {
-            font-size: 1.8rem; margin-bottom: 30px;
-            border-left: 4px solid #302b63; padding-left: 12px;
+        .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+        /* Nav */
+        nav {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(8,9,10,0.85); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        
+        nav .container {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 56px;
+        }
+        nav .logo {
+            font-size: 14px; font-weight: 510; color: #f7f8f8;
+            letter-spacing: -0.14px;
+        }
+        nav .nav-links { display: flex; gap: 24px; }
+        nav .nav-links a {
+            font-size: 13px; font-weight: 510; color: #8a8f98;
+            text-decoration: none; transition: color 0.2s;
+        }
+        nav .nav-links a:hover { color: #f7f8f8; }
+
+        /* Hero */
+        .hero {
+            padding: 100px 24px 80px; text-align: center;
+        }
+        .hero h1 {
+            font-size: 48px; font-weight: 510; color: #f7f8f8;
+            letter-spacing: -1.056px; line-height: 1.0;
+            margin-bottom: 16px;
+        }
+        .hero .subtitle {
+            font-size: 18px; font-weight: 400; color: #8a8f98;
+            letter-spacing: -0.165px; max-width: 500px; margin: 0 auto 32px;
+        }
+        .hero .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+        .hero .tag {
+            font-size: 12px; font-weight: 510; color: #d0d6e0;
+            padding: 0 10px; height: 28px; display: inline-flex; align-items: center;
+            border-radius: 9999px; border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Sections */
+        section { padding: 64px 0; }
+        .section-header { margin-bottom: 40px; }
+        .section-header h2 {
+            font-size: 24px; font-weight: 400; color: #f7f8f8;
+            letter-spacing: -0.288px; margin-bottom: 8px;
+        }
+        .section-header p {
+            font-size: 15px; color: #62666d; letter-spacing: -0.165px;
+        }
+
         /* Project Cards */
         .project-card {
-            background: #f8f9fa; border-radius: 12px; padding: 30px;
-            margin-bottom: 24px; border: 1px solid #e9ecef;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px; padding: 32px;
+            margin-bottom: 16px; transition: background 0.2s;
         }
-        .project-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .project-card h3 { font-size: 1.3rem; margin-bottom: 12px; color: #302b63; }
-        .project-card p { margin-bottom: 16px; color: #555; }
-        
+        .project-card:hover { background: rgba(255,255,255,0.04); }
+        .project-card h3 {
+            font-size: 17px; font-weight: 590; color: #f7f8f8;
+            letter-spacing: -0.204px; margin-bottom: 12px;
+        }
+        .project-card p { font-size: 15px; color: #8a8f98; margin-bottom: 16px; letter-spacing: -0.165px; }
+        .project-card ul {
+            margin-left: 20px; margin-bottom: 16px; font-size: 15px; color: #8a8f98;
+        }
+        .project-card li { margin-bottom: 6px; }
+        .project-card strong { color: #d0d6e0; font-weight: 590; }
+        .highlight { color: #7170ff; font-weight: 590; }
+
         /* Stats */
-        .stats { display: flex; gap: 20px; flex-wrap: wrap; margin: 16px 0; }
+        .stats { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
         .stat {
-            background: white; padding: 12px 20px; border-radius: 8px;
-            text-align: center; flex: 1; min-width: 120px; border: 1px solid #e9ecef;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px; padding: 14px 20px;
+            text-align: center; flex: 1; min-width: 100px;
         }
-        .stat .num { font-size: 1.5rem; font-weight: 700; color: #302b63; }
-        .stat .label { font-size: 0.8rem; color: #888; }
-        
+        .stat .num {
+            font-size: 20px; font-weight: 510; color: #f7f8f8;
+            letter-spacing: -0.24px; font-feature-settings: 'cv01', 'ss03';
+        }
+        .stat .label {
+            font-size: 12px; font-weight: 400; color: #62666d;
+            margin-top: 2px;
+        }
+
         /* Tags */
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
         .tech-tags span {
-            background: #e8e6f0; color: #302b63; padding: 4px 12px;
-            border-radius: 16px; font-size: 0.85rem;
+            font-size: 12px; font-weight: 510; color: #8a8f98;
+            padding: 0 8px; height: 24px; display: inline-flex; align-items: center;
+            border-radius: 2px; background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        
-        /* Skills */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .skill-item { background: #f8f9fa; padding: 20px; border-radius: 10px; }
-        .skill-item h4 { margin-bottom: 8px; color: #302b63; }
-        .skill-bar { background: #e9ecef; height: 8px; border-radius: 4px; overflow: hidden; }
-        .skill-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #302b63, #6c63ff); }
-        
-        /* Demo Button */
-        .demo-btn {
-            display: inline-block; background: #302b63; color: white;
-            padding: 10px 24px; border-radius: 8px; text-decoration: none;
-            font-weight: 600; transition: background 0.2s; margin: 4px;
+
+        /* Buttons */
+        .btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 13px; font-weight: 510; text-decoration: none;
+            padding: 7px 14px; border-radius: 6px; transition: all 0.2s;
+            margin-right: 6px; margin-bottom: 6px;
         }
-        .demo-btn:hover { background: #6c63ff; }
-        .demo-btn.outline {
-            background: transparent; border: 2px solid #302b63; color: #302b63;
+        .btn-primary {
+            background: #5e6ad2; color: #ffffff;
         }
-        .demo-btn.outline:hover { background: #302b63; color: white; }
-        
+        .btn-primary:hover { background: #828fff; }
+        .btn-ghost {
+            background: rgba(255,255,255,0.02); color: #d0d6e0;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.05); }
+
+        /* Insight cards */
+        .insight-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px; padding: 24px;
+            margin-bottom: 8px;
+        }
+        .insight-card h4 {
+            font-size: 15px; font-weight: 590; color: #f7f8f8;
+            letter-spacing: -0.165px; margin-bottom: 8px;
+        }
+        .insight-card p { font-size: 14px; color: #8a8f98; letter-spacing: -0.13px; }
+        .insight-card strong { color: #d0d6e0; }
+
+        /* Skills grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
+        .skill-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 8px; padding: 20px;
+        }
+        .skill-item h4 {
+            font-size: 14px; font-weight: 590; color: #f7f8f8;
+            margin-bottom: 4px; letter-spacing: -0.13px;
+        }
+        .skill-item .desc { font-size: 13px; color: #62666d; margin-bottom: 12px; }
+        .skill-bar {
+            background: rgba(255,255,255,0.05); height: 4px;
+            border-radius: 2px; overflow: hidden;
+        }
+        .skill-bar-fill { height: 100%; border-radius: 2px; background: #5e6ad2; }
+
+        /* Timeline */
+        .timeline-phase { margin-bottom: 20px; }
+        .timeline-phase h4 {
+            font-size: 14px; font-weight: 590; color: #f7f8f8;
+            margin-bottom: 6px; letter-spacing: -0.13px;
+        }
+        .timeline-phase p, .timeline-phase li {
+            font-size: 14px; color: #8a8f98; letter-spacing: -0.13px;
+            margin-bottom: 4px;
+        }
+
+        /* Contact */
+        .contact-section { text-align: center; padding: 80px 0; }
+        .contact-section h2 {
+            font-size: 32px; font-weight: 510; color: #f7f8f8;
+            letter-spacing: -0.704px; margin-bottom: 12px;
+        }
+        .contact-section .sub {
+            font-size: 16px; color: #62666d; margin-bottom: 32px;
+        }
+        .contact-info {
+            font-size: 14px; color: #8a8f98; margin-top: 24px;
+        }
+
         /* Footer */
         footer {
-            background: #1a1a2e; color: #aaa; text-align: center;
-            padding: 40px 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 32px 0; text-align: center;
         }
-        footer a { color: #6c63ff; text-decoration: none; }
-        
-        /* Highlight */
-        .highlight { color: #6c63ff; font-weight: 700; }
-        
+        footer p { font-size: 13px; color: #62666d; }
+        footer a { color: #7170ff; text-decoration: none; }
+
+        /* Divider */
+        .divider {
+            height: 1px; background: rgba(255,255,255,0.05);
+            margin: 0; border: none;
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
+            .hero h1 { font-size: 32px; letter-spacing: -0.704px; }
+            .hero .subtitle { font-size: 16px; }
+            .hero { padding: 64px 24px 48px; }
+            section { padding: 48px 0; }
+            .project-card { padding: 24px; }
             .stats { flex-direction: column; }
+            .stat { min-width: auto; }
+            nav .nav-links { gap: 16px; }
+            .contact-section h2 { font-size: 24px; }
         }
     </style>
 </head>
 <body>
 
+<!-- Nav -->
+<nav>
+    <div class="container">
+        <span class="logo">郑裕坚</span>
+        <div class="nav-links">
+            <a href="#projects">项目</a>
+            <a href="#insights">洞察</a>
+            <a href="#skills">能力</a>
+            <a href="https://github.com/Guanyu-AI-pro" target="_blank">GitHub</a>
+        </div>
+    </div>
+</nav>
+
 <!-- Hero -->
 <div class="hero">
     <h1>郑裕坚</h1>
-    <p>AI应用工程师 · 专注RAG系统与智能Agent开发</p>
-    <div style="margin-top: 20px;">
-        <span class="tag">🤖 RAG系统架构</span>
-        <span class="tag">🔗 Agent协同开发</span>
-        <span class="tag">📊 AI评测体系</span>
-        <span class="tag">⚙️ RPA自动化</span>
+    <p class="subtitle">AI应用工程师 · 专注业务效率自动化与智能系统落地</p>
+    <div class="tags">
+        <span class="tag">RAG 系统架构</span>
+        <span class="tag">Agent 协同开发</span>
+        <span class="tag">AI 评测体系</span>
+        <span class="tag">业务流程自动化</span>
     </div>
 </div>
 
+<div class="divider"></div>
+
 <!-- Projects -->
-<section>
+<section id="projects">
     <div class="container">
-        <h2>项目作品</h2>
-        
+        <div class="section-header">
+            <h2>项目作品</h2>
+            <p>从需求到落地的完整链路，代码借助 AI 辅助，架构判断来自实际踩坑</p>
+        </div>
+
         <!-- Agent Collaboration -->
         <div class="project-card">
-            <h3>🔗 多Agent协同开发工作流</h3>
-            <p>构建 Hermes Agent + Claude Code + OpenCode 三Agent协同工作流：Hermes负责任务调度与自动化（Skill开发、Cron定时任务、子代理编排），Claude Code负责复杂代码架构设计与重构，OpenCode负责快速功能迭代与调试。三者通过统一配置管理实现无缝切换与协作。</p>
-            
+            <h3>多Agent协同开发工作流</h3>
+            <p>构建 Hermes Agent + Claude Code + OpenCode 三Agent协同工作流：Hermes负责任务调度与自动化（Skill开发、Cron定时任务、子代理编排），Claude Code负责复杂代码架构设计与重构，OpenCode负责快速功能迭代与调试。</p>
             <div class="stats">
-                <div class="stat">
-                    <div class="num">3</div>
-                    <div class="label">Agent协同</div>
-                </div>
-                <div class="stat">
-                    <div class="num">74→98.7%</div>
-                    <div class="label">评测提升</div>
-                </div>
-                <div class="stat">
-                    <div class="num">24/7</div>
-                    <div class="label">自动化运行</div>
-                </div>
+                <div class="stat"><div class="num">3</div><div class="label">Agent 协同</div></div>
+                <div class="stat"><div class="num">74→98.7%</div><div class="label">评测提升</div></div>
+                <div class="stat"><div class="num">24/7</div><div class="label">自动化运行</div></div>
             </div>
-            
-            <p><strong>实战场景：</strong>RAG系统开发中，Hermes编排评测任务 → Claude Code重构检索架构 → OpenCode快速迭代BM25混合检索方案，三者协同完成从74%到98.7%的评测提升。</p>
-            
+            <p><strong>实战：</strong>RAG系统开发中，Hermes编排评测任务 → Claude Code重构检索架构 → OpenCode快速迭代BM25混合检索方案，三者协同完成从74%到98.7%的评测提升。</p>
             <div class="tech-tags">
                 <span>Hermes Agent</span><span>Claude Code</span><span>OpenCode</span>
                 <span>Skill开发</span><span>Cron自动化</span><span>子代理编排</span>
@@ -142,66 +271,41 @@
 
         <!-- RAG System -->
         <div class="project-card">
-            <h3>📡 电信套餐智能问答系统</h3>
+            <h3>电信套餐智能问答系统</h3>
             <p>基于 LangChain Agent + ChromaDB 构建的 RAG 系统，支持自然语言查询套餐信息、多条件对比、费用计算等复杂场景。通过向量+BM25混合检索与Rerank重排序，实现<span class="highlight">98.7%综合得分、5%幻觉率</span>。</p>
-            
             <div class="stats">
-                <div class="stat">
-                    <div class="num">98.7%</div>
-                    <div class="label">综合得分</div>
-                </div>
-                <div class="stat">
-                    <div class="num">4s</div>
-                    <div class="label">平均响应</div>
-                </div>
-                <div class="stat">
-                    <div class="num">5%</div>
-                    <div class="label">幻觉率</div>
-                </div>
-                <div class="stat">
-                    <div class="num">190+</div>
-                    <div class="label">知识文档</div>
-                </div>
+                <div class="stat"><div class="num">98.7%</div><div class="label">综合得分</div></div>
+                <div class="stat"><div class="num">4s</div><div class="label">平均响应</div></div>
+                <div class="stat"><div class="num">5%</div><div class="label">幻觉率</div></div>
+                <div class="stat"><div class="num">190+</div><div class="label">知识文档</div></div>
             </div>
-            
             <p><strong>核心优化：</strong></p>
-            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
+            <ul>
                 <li>BM25 + 向量混合检索，对比型满分率从40%提升至100%</li>
                 <li>LangChain Agent Tool Calling，LLM自主规划调用链</li>
                 <li>Rerank重排序（BGE-Reranker-v2-M3），召回精度提升30%</li>
                 <li>评测体系：30题 × 6题型 × 3维度，量化每次优化效果</li>
             </ul>
-            
-            <a href="http://8.163.101.180:8001/static/web_ui.html" class="demo-btn" target="_blank">🚀 在线演示</a>
-            <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="demo-btn outline" target="_blank">📦 GitHub</a>
-            <a href="https://github.com/Guanyu-AI-pro/rag-from-zero" class="demo-btn outline" target="_blank">📖 学习记录</a>
-            
+            <div style="margin-bottom: 16px;">
+                <a href="http://8.163.101.180:8001/static/web_ui.html" class="btn btn-primary" target="_blank">在线演示</a>
+                <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="btn btn-ghost" target="_blank">GitHub</a>
+                <a href="https://github.com/Guanyu-AI-pro/rag-from-zero" class="btn btn-ghost" target="_blank">学习记录</a>
+            </div>
             <div class="tech-tags">
                 <span>Python</span><span>LangChain</span><span>ChromaDB</span>
                 <span>DeepSeek</span><span>FastAPI</span><span>BM25</span><span>Rerank</span><span>Agent</span>
             </div>
         </div>
-        
+
         <!-- Evaluation System -->
         <div class="project-card">
-            <h3>📊 RAG/Agent 多框架评测体系</h3>
+            <h3>RAG/Agent 多框架评测体系</h3>
             <p>设计30道测试题，覆盖6种题型（单点查询、对比型、多跳推理、流程型、场景型、边界测试），横向对比Dify Agent、LangChain RAG、LangChain Agent三种方案。构建自动化评测脚本+人工评分双体系。</p>
-            
             <div class="stats">
-                <div class="stat">
-                    <div class="num">6</div>
-                    <div class="label">题型覆盖</div>
-                </div>
-                <div class="stat">
-                    <div class="num">30</div>
-                    <div class="label">测试用例</div>
-                </div>
-                <div class="stat">
-                    <div class="num">148/150⭐</div>
-                    <div class="label">最高得分</div>
-                </div>
+                <div class="stat"><div class="num">6</div><div class="label">题型覆盖</div></div>
+                <div class="stat"><div class="num">30</div><div class="label">测试用例</div></div>
+                <div class="stat"><div class="num">148/150</div><div class="label">最高得分</div></div>
             </div>
-            
             <div class="tech-tags">
                 <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span><span>多框架对比</span>
             </div>
@@ -209,36 +313,21 @@
 
         <!-- Pure Python RAG -->
         <div class="project-card">
-            <h3>⚡ 纯Python RAG系统（无框架依赖）</h3>
-            <p>从零实现完整 RAG 链路，不依赖 LangChain 框架。包含文档加载、分类切分、向量+BM25混合检索、Rerank重排序、LLM生成全链路。代码仅 954 行，比 LangChain Agent 方案<span class="highlight">快 65.7%</span>，通过率提升 10%。</p>
-            
+            <h3>纯Python RAG系统（无框架依赖）</h3>
+            <p>从零实现完整 RAG 链路，不依赖 LangChain。包含文档加载、分类切分、向量+BM25混合检索、Rerank重排序、LLM生成全链路。代码仅 954 行，比 LangChain Agent 方案<span class="highlight">快 65.7%</span>，通过率提升 10%。</p>
             <div class="stats">
-                <div class="stat">
-                    <div class="num">94.7分</div>
-                    <div class="label">综合得分</div>
-                </div>
-                <div class="stat">
-                    <div class="num">96.7%</div>
-                    <div class="label">通过率</div>
-                </div>
-                <div class="stat">
-                    <div class="num">6.87s</div>
-                    <div class="label">平均响应</div>
-                </div>
-                <div class="stat">
-                    <div class="num">0%</div>
-                    <div class="label">幻觉率</div>
-                </div>
+                <div class="stat"><div class="num">94.7分</div><div class="label">综合得分</div></div>
+                <div class="stat"><div class="num">96.7%</div><div class="label">通过率</div></div>
+                <div class="stat"><div class="num">6.87s</div><div class="label">平均响应</div></div>
+                <div class="stat"><div class="num">0%</div><div class="label">幻觉率</div></div>
             </div>
-            
             <p><strong>核心设计：</strong></p>
-            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
-                <li>分类切分策略：Q&amp;A 用小块(250字)、套餐详情用大块(500字)、默认 300字</li>
+            <ul>
+                <li>分类切分策略：Q&A 用小块(250字)、套餐详情用大块(500字)、默认 300字</li>
                 <li>向量 + BM25 并行检索 + Rerank 重排序，三路融合</li>
                 <li>查询改写 + 意图分类 + 查询扩展（推荐/对比/事实三种策略）</li>
                 <li>嵌入缓存 + BM25 查询缓存，重复查询零延迟</li>
             </ul>
-            
             <div class="tech-tags">
                 <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>Rerank</span><span>DeepSeek</span><span>零框架依赖</span>
             </div>
@@ -246,244 +335,230 @@
 
         <!-- RPA -->
         <div class="project-card">
-            <h3>🤖 运营商套餐数据自动采集</h3>
+            <h3>运营商套餐数据自动采集</h3>
             <p>使用 Playwright 实现运营商网站套餐数据的自动化抓取，包含页面渲染等待、数据清洗、结构化存储等完整流程。抓取数据直接导入RAG知识库，实现知识库自动更新。</p>
-            
             <div class="stats">
-                <div class="stat">
-                    <div class="num">10+</div>
-                    <div class="label">采集套餐数</div>
-                </div>
-                <div class="stat">
-                    <div class="num">100%</div>
-                    <div class="label">自动化率</div>
-                </div>
+                <div class="stat"><div class="num">10+</div><div class="label">采集套餐数</div></div>
+                <div class="stat"><div class="num">100%</div><div class="label">自动化率</div></div>
             </div>
-            
             <div class="tech-tags">
                 <span>Playwright</span><span>Python</span><span>RPA</span><span>数据采集</span>
             </div>
         </div>
 
-        <!-- WEB端集成 -->
+        <!-- Web Integration -->
         <div class="project-card">
-            <h3>🌐 RAG 系统 WEB 端集成</h3>
+            <h3>RAG 系统 WEB 端集成</h3>
             <p>将 RAG 系统集成到 Web 界面，通过公网 IP 实现远程访问。用户可通过浏览器直接与知识库对话，无需本地部署。</p>
-            
             <div class="stats">
-                <div class="stat">
-                    <div class="num">公网 IP</div>
-                    <div class="label">远程访问</div>
-                </div>
-                <div class="stat">
-                    <div class="num">Web UI</div>
-                    <div class="label">可视化界面</div>
-                </div>
+                <div class="stat"><div class="num">公网IP</div><div class="label">远程访问</div></div>
+                <div class="stat"><div class="num">Web UI</div><div class="label">可视化界面</div></div>
             </div>
-            
             <div class="tech-tags">
                 <span>FastAPI</span><span>公网部署</span><span>Web UI</span>
             </div>
         </div>
 
-        <!-- 四个月RAG实战历程 -->
+        <!-- Journey -->
         <div class="project-card">
-            <h3>📅 四个月 RAG 实战历程</h3>
-            <p>从 2026.02 到 2026.06，完成从学习到三套系统落地的完整周期。代码实现借助 AI 辅助完成，但每一条检索策略的选择、每一个参数的调优、每一次架构的升级，都来自实际踩坑后的判断。</p>
-            
-            <div style="margin-top: 16px;">
-                <p style="margin-bottom: 8px;"><strong>第一阶段：观望与学习（2月）</strong></p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">基础概念学习，了解 RAG 原理、向量检索、Embedding 模型等基础概念，观望各平台方案，为动手做准备。</p>
-                
-                <p style="margin-bottom: 8px;"><strong>第二阶段：动手搭建（3.20 起）</strong></p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">• <strong>3.20</strong> — 第一个 RAG：Cherry Studio 本地搭建，8GB 内存跑 bge-m3，CPU 99%，首次 RAG 对话成功。发现：基础搭建只是开始，检索生成才是灵魂。</p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">• <strong>3.25 — 4.2</strong> — 平台探索期：5 个平台横向对比。腾讯云 ADP（幻觉严重）→ AnythingLLM（本地受限）→ LangChain（毛坯房）→ Dify（最终选择）。每个平台都教会了不同的东西。</p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">• <strong>4.2</strong> — 文档编码之战。批量转换，PowerShell 乱码、Python 失败、VS Code 清空内容，最终用两步转换法解决。数据清洗是 RAG 的地基。</p>
-                
-                <p style="margin-bottom: 8px;"><strong>第三阶段：调优突破（4.4 — 4.13）</strong></p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">• <strong>纯 RAG 的天花板</strong> — 分块大小、overlap、相似度阈值反复调参，发现单靠参数调优无法突破。领悟：RAG 的核心矛盾是召回率 vs 准确率的平衡。</p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 16px;">• <strong>突破：ChatFlow 三检索节点架构</strong> — 加入第三个知识检索节点（Q&A 知识库），召回率从 ~60% 跃升到 ~85%。这是最重要的架构决策。</p>
-                
-                <p style="margin-bottom: 8px;"><strong>第四阶段：纯代码实现（5月）</strong></p>
-                <p style="color: #666; font-size: 0.95rem; margin-bottom: 4px;">三套不同架构的 RAG 系统：电信套餐（规则驱动）/ 王小波文学（父子分块）/ 英文学术论文（LangGraph 条件路由）</p>
-                
-                <p style="margin-bottom: 8px;"><strong>第五阶段：混合部署 + 持续迭代（5—6月）</strong></p>
-                <p style="color: #666; font-size: 0.95rem;">Dify + 本地向量库 + API 模型的混合架构，vLLM 本地模型部署探索。</p>
+            <h3>四个月 RAG 实战历程</h3>
+            <p>从 2026.02 到 2026.06，完成从学习到三套系统落地的完整周期。每一条检索策略的选择、每一个参数的调优、每一次架构的升级，都来自实际踩坑后的判断。</p>
+            <div class="timeline-phase">
+                <h4>第一阶段：观望与学习（2月）</h4>
+                <p>基础概念学习，了解 RAG 原理、向量检索、Embedding 模型，观望各平台方案。</p>
             </div>
-            
+            <div class="timeline-phase">
+                <h4>第二阶段：动手搭建（3.20 起）</h4>
+                <li>3.20 — Cherry Studio 本地搭建，8GB 内存跑 bge-m3，CPU 99%，首次 RAG 对话成功</li>
+                <li>3.25–4.2 — 5个平台横向对比：腾讯云 ADP → AnythingLLM → LangChain → Dify</li>
+                <li>4.2 — 文档编码之战，最终用两步转换法解决 ANSI→UTF-8</li>
+            </div>
+            <div class="timeline-phase">
+                <h4>第三阶段：调优突破（4.4–4.13）</h4>
+                <li>纯 RAG 天花板：参数调优无法突破，领悟召回率 vs 准确率的平衡</li>
+                <li>突破：ChatFlow 三检索节点架构，召回率从 ~60% 跃升到 ~85%</li>
+            </div>
+            <div class="timeline-phase">
+                <h4>第四阶段：纯代码实现（5月）</h4>
+                <p>三套不同架构：电信套餐（规则驱动）/ 王小波文学（父子分块）/ 英文学术论文（LangGraph 条件路由）</p>
+            </div>
+            <div class="timeline-phase">
+                <h4>第五阶段：混合部署 + 持续迭代（5–6月）</h4>
+                <p>Dify + 本地向量库 + API 模型的混合架构，vLLM 本地模型部署探索。</p>
+            </div>
             <div class="stats">
-                <div class="stat">
-                    <div class="num">5+</div>
-                    <div class="label">平台探索</div>
-                </div>
-                <div class="stat">
-                    <div class="num">3</div>
-                    <div class="label">套系统落地</div>
-                </div>
-                <div class="stat">
-                    <div class="num">4个月</div>
-                    <div class="label">实战迭代</div>
-                </div>
+                <div class="stat"><div class="num">5+</div><div class="label">平台探索</div></div>
+                <div class="stat"><div class="num">3</div><div class="label">套系统落地</div></div>
+                <div class="stat"><div class="num">4个月</div><div class="label">实战迭代</div></div>
             </div>
         </div>
     </div>
 </section>
+
+<div class="divider"></div>
 
 <!-- Insights -->
-<section style="background: #f8f9fa;">
+<section id="insights">
     <div class="container">
-        <h2>技术洞察</h2>
-        <p style="color: #666; margin-bottom: 24px; font-size: 0.95rem;">从实践中提炼的关键认知，不是"会用工具"，而是"理解边界"</p>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 BM25 混合检索为什么能从 74% 拉到 98.7%？</h3>
-            <p>向量检索擅长语义匹配（"便宜的套餐"→"低月租方案"），但遇到精确关键词（"实付69元"、"违约金30元"）时反而模糊。BM25 的精确关键词匹配恰好弥补了这个短板。两者不是替代关系，而是互补。<strong>关键认知：混合检索不是"加一个保险"，而是解决不同粒度的召回问题。</strong></p>
+        <div class="section-header">
+            <h2>技术洞察</h2>
+            <p>从实践中提炼的关键认知——不是"会用工具"，而是"理解边界"</p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 小数据不该用 RAG</h3>
-            <p>用 51 篇个人随笔做 RAG 实验时发现：数据量小（几万字以内），直接塞进 LLM 上下文窗口效果反而比 RAG 更好。RAG 的切块-检索-拼接过程会丢失上下文关联。<strong>关键认知：RAG 是大数据场景的工具，小数据直接喂全文才是最优解。</strong></p>
+
+        <div class="insight-card">
+            <h4>BM25 混合检索为什么能从 74% 拉到 98.7%？</h4>
+            <p>向量检索擅长语义匹配，但遇到精确关键词时反而模糊。BM25 的精确匹配恰好弥补短板。<strong>混合检索不是"加保险"，而是解决不同粒度的召回问题。</strong></p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 评测题可能存在"过拟合"</h3>
-            <p>60 道测试题得分率 97.7%、零幻觉——但测试题是基于知识库内容设计的，等于"开卷考试"。真正的验证需要线上真实用户提问。主动识别这个局限性，比追求高分更有价值。<strong>关键认知：评测的目的是暴露问题，不是证明自己厉害。</strong></p>
+        <div class="insight-card">
+            <h4>小数据不该用 RAG</h4>
+            <p>数据量小（几万字以内），直接塞进 LLM 上下文窗口效果反而更好。RAG 的切块-检索-拼接会丢失上下文关联。<strong>RAG 是大数据场景的工具，小数据直接喂全文才是最优解。</strong></p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 三框架对比的真实发现</h3>
-            <p>Dify Agent 质量最高（97.3%）但响应慢（9s），LangChain RAG 最快（2.86s）但质量略低（91.6%），LangChain Agent 兼顾（94.9% + 14.65s）。没有"最好的框架"，只有"最适合场景的框架"。<strong>关键认知：技术选型的核心是理解 trade-off，不是追新。</strong></p>
+        <div class="insight-card">
+            <h4>评测题可能存在"过拟合"</h4>
+            <p>60 道测试题 97.7% 零幻觉——但测试题基于知识库内容设计，等于"开卷考试"。<strong>评测的目的是暴露问题，不是证明自己厉害。</strong></p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 纯 RAG 有天花板，突破靠"加一层"</h3>
-            <p>花了三周在纯 RAG 上调参数，chunk_size、检索权重、prompt 改了个遍，召回率始终上不去。后来在 Chatflow 里多加了一个检索节点（无心之举），召回率直接跳到八九十。<strong>关键认知：当一个维度的优化到极限时，突破往往来自架构层面的改变，而不是参数微调。</strong></p>
+        <div class="insight-card">
+            <h4>三框架对比的真实发现</h4>
+            <p>Dify Agent 质量最高（97.3%）但响应慢（9s），LangChain RAG 最快（2.86s）但质量略低，LangChain Agent 兼顾。<strong>没有"最好的框架"，只有"最适合场景的框架"。</strong></p>
         </div>
-        
-        <!-- PDF新增：关键经验总结 -->
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 检索 > 生成</h3>
+        <div class="insight-card">
+            <h4>纯 RAG 有天花板，突破靠"加一层"</h4>
+            <p>参数调到极限时，突破来自架构层面的改变——在 Chatflow 多加一个检索节点，召回率直接跳到八九十。</p>
+        </div>
+        <div class="insight-card">
+            <h4>检索 > 生成</h4>
             <p>RAG 的核心不是模型，而是检索。<strong>检索不到 → 一定幻觉。</strong>Prompt 无法弥补检索缺陷。80% 的优化精力应该花在检索侧。</p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 数据质量决定上限</h3>
-            <p>结构化 > 非结构化，一致性 > 数量。文档编码（ANSI→UTF-8）、格式统一、Q&A 增强，这些"脏活"才是决定 RAG 质量的关键。</p>
+        <div class="insight-card">
+            <h4>数据质量决定上限</h4>
+            <p>结构化 > 非结构化，一致性 > 数量。文档编码、格式统一、Q&A 增强——这些"脏活"才是决定 RAG 质量的关键。</p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 工程 > 算法</h3>
-            <p>部署、存储、性能、环境配置、编码转换 —— 这些工程问题占据了 60% 的时间。解决它们的能力才是落地 RAG 的关键。</p>
+        <div class="insight-card">
+            <h4>工程 > 算法</h4>
+            <p>部署、存储、性能、环境配置、编码转换——这些工程问题占据了 60% 的时间。解决它们的能力才是落地 RAG 的关键。</p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 切分策略因场景而异</h3>
-            <p>Q&A 类用小块（250字）、详情类用大块（500字）、文学用父子层级、学术用双粒度。<strong>没有万能切分，只有最适合的切分。</strong></p>
+        <div class="insight-card">
+            <h4>切分策略因场景而异</h4>
+            <p>Q&A 用小块（250字）、详情用大块（500字）、文学用父子层级、学术用双粒度。<strong>没有万能切分，只有最适合的切分。</strong></p>
         </div>
-        
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">💡 平衡而非最优化</h3>
-            <p>召回率 vs 准确率 vs 幻觉率是三角制衡。TopK=3~5、Score 阈值 0.6~0.7、严格 Prompt + 拒答机制，接受"部分问题不回答"比"编造答案"好。</p>
-        </div>
-        
-        <!-- PDF新增：RAG评估标准 -->
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">📊 RAG 评估标准</h3>
-            <p>在四个月的实践中，总结出一套可量化的 RAG 质量评估框架：</p>
-            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
-                <li>召回率 ≥ 80%</li>
-                <li>准确率 ≥ 80%</li>
-                <li>幻觉率 ≤ 20%</li>
-                <li>完整性 ≥ 70%</li>
-            </ul>
-            <p><strong>评估方法论：</strong>问 10 个问题，2 个没召回可以接受，2 个答错可以接受，但编造不能接受。所以引入"可回答性判断"——生成前先判断知识库是否有答案，无答案直接拒答。<strong>宁可不答，不可答错。</strong></p>
-        </div>
-        
-        <!-- PDF新增：技术栈全景 -->
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">🛠️ 技术栈全景</h3>
-            <p style="margin-bottom: 12px;"><strong>框架 & 平台：</strong>Dify, AnythingLLM, Cherry Studio, LangChain, LangGraph</p>
-            <p style="margin-bottom: 12px;"><strong>向量数据库：</strong>ChromaDB, Dify 内置</p>
-            <p style="margin-bottom: 12px;"><strong>嵌入模型：</strong>BGE-M3, BGE-Large-ZH</p>
-            <p style="margin-bottom: 12px;"><strong>重排序：</strong>BGE-Reranker-v2-M3</p>
-            <p style="margin-bottom: 12px;"><strong>大语言模型：</strong>DeepSeek R1, MiniMax, MiMo, SiliconFlow API</p>
-            <p style="margin-bottom: 12px;"><strong>推理引擎：</strong>Ollama, vLLM, API 调用</p>
-            <p><strong>部署环境：</strong>Ubuntu 云服务器，公网 IP 部署，Docker 用于 Dify 环境</p>
-        </div>
-        
-        <!-- PDF新增：后续规划 -->
-        <div class="project-card">
-            <h3 style="font-size: 1.1rem;">🚀 后续规划</h3>
-            <ul style="margin-left: 20px; color: #555; margin-bottom: 16px;">
-                <li><strong>Agentic RAG：</strong>用 LangGraph Agent 实现自反思检索（plan → retrieve → reflect → generate 循环）</li>
-                <li><strong>本地模型部署：</strong>vLLM + GPU 环境下的本地大模型推理</li>
-                <li><strong>评估自动化：</strong>构建标准评测集，量化对比不同检索策略的召回率/准确率</li>
-                <li><strong>实时数据接入：</strong>移动官网套餐实时查询（Agent 工具调用模式）</li>
-            </ul>
+        <div class="insight-card">
+            <h4>平衡而非最优化</h4>
+            <p>召回率 vs 准确率 vs 幻觉率是三角制衡。TopK=3~5、Score 阈值 0.6~0.7、严格 Prompt + 拒答机制。<strong>宁可不答，不可答错。</strong></p>
         </div>
     </div>
 </section>
 
+<div class="divider"></div>
+
 <!-- Skills -->
-<section>
+<section id="skills">
     <div class="container">
-        <h2>技术能力</h2>
+        <div class="section-header">
+            <h2>技术能力</h2>
+        </div>
         <div class="skills-grid">
             <div class="skill-item">
                 <h4>Agent 协同开发</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Hermes · Claude Code · OpenCode · 多Agent编排</p>
+                <p class="desc">Hermes · Claude Code · OpenCode · 多Agent编排</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
             </div>
             <div class="skill-item">
                 <h4>RAG 系统架构</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">LangChain · ChromaDB · 混合检索 · Rerank</p>
+                <p class="desc">LangChain · ChromaDB · 混合检索 · Rerank</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
             </div>
             <div class="skill-item">
                 <h4>Python 开发</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">FastAPI · 数据处理 · 自动化脚本</p>
+                <p class="desc">FastAPI · 数据处理 · 自动化脚本</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%"></div></div>
             </div>
             <div class="skill-item">
                 <h4>AI 评测与优化</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">多维度评测 · 数据驱动 · 持续迭代</p>
+                <p class="desc">多维度评测 · 数据驱动 · 持续迭代</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%"></div></div>
             </div>
             <div class="skill-item">
                 <h4>RPA 自动化</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Playwright · 浏览器自动化 · 数据采集</p>
+                <p class="desc">Playwright · 浏览器自动化 · 数据采集</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 80%"></div></div>
             </div>
             <div class="skill-item">
                 <h4>Linux 服务器运维</h4>
-                <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Ubuntu 云服务器 · 公网部署 · 环境配置</p>
+                <p class="desc">Ubuntu 云服务器 · 公网部署 · 环境配置</p>
                 <div class="skill-bar"><div class="skill-bar-fill" style="width: 70%"></div></div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Contact -->
+<div class="divider"></div>
+
+<!-- Tech Stack -->
 <section>
-    <div class="container" style="text-align: center;">
-        <h2 style="border: none; text-align: center;">联系方式</h2>
-        <p style="font-size: 1.1rem; color: #555; margin-bottom: 20px;">
-            期待与您交流 AI 应用落地的更多可能
-        </p>
-        <p>
-            <a href="https://github.com/Guanyu-AI-pro" class="demo-btn" target="_blank">GitHub</a>
-        </p>
-        <p style="margin-top: 16px; color: #888;">
-            📧 zy_zy2@126.com &nbsp;&nbsp; 📱 17727681285
-        </p>
+    <div class="container">
+        <div class="section-header">
+            <h2>技术栈</h2>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <h4>框架 & 平台</h4>
+                <p class="desc">Dify · LangChain · LangGraph · AnythingLLM</p>
+            </div>
+            <div class="skill-item">
+                <h4>向量数据库</h4>
+                <p class="desc">ChromaDB · Dify 内置向量库</p>
+            </div>
+            <div class="skill-item">
+                <h4>嵌入 & 重排序</h4>
+                <p class="desc">BGE-M3 · BGE-Large-ZH · BGE-Reranker-v2-M3</p>
+            </div>
+            <div class="skill-item">
+                <h4>大语言模型</h4>
+                <p class="desc">DeepSeek · MiMo · SiliconFlow API</p>
+            </div>
+            <div class="skill-item">
+                <h4>推理引擎</h4>
+                <p class="desc">Ollama · vLLM · API 调用</p>
+            </div>
+            <div class="skill-item">
+                <h4>部署环境</h4>
+                <p class="desc">Ubuntu · Docker · 公网IP · FastAPI</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Contact -->
+<section class="contact-section">
+    <div class="container">
+        <h2>联系方式</h2>
+        <p class="sub">期待与您交流 AI 应用落地的更多可能</p>
+        <a href="https://github.com/Guanyu-AI-pro" class="btn btn-primary" target="_blank">GitHub</a>
+        <div class="contact-info">
+            <p>zy_zy2@126.com · 17727681285</p>
+            <p style="margin-top: 8px; font-size: 13px;">CAIE认证人工智能工程师</p>
+        </div>
     </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>© 2026 郑裕坚 · AI应用工程师</p>
-    <p style="margin-top: 8px; font-size: 0.85rem;">CAIE认证人工智能工程师</p>
+    <div class="container">
+        <p>© 2026 郑裕坚 · AI应用工程师</p>
+    </div>
 </footer>
+
+<script>
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    });
+});
+</script>
 
 </body>
 </html>
