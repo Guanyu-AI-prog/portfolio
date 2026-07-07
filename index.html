@@ -122,6 +122,29 @@
             border: 1px solid rgba(255,255,255,0.05);
         }
 
+        /* Screenshot */
+        .screenshot-container {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: #1a1a1a;
+        }
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .screenshot-label {
+            text-align: center;
+            padding: 8px;
+            font-size: 12px;
+            color: #8a8f98;
+            background: rgba(255,255,255,0.03);
+        }
+
         /* Buttons */
         .btn {
             display: inline-flex; align-items: center; gap: 6px;
@@ -299,6 +322,10 @@
             </div>
             <p><strong>业务价值：</strong>以前一个月写3-5个调账申请，现在能写10-15个。不是技术难，是<strong>把AI塞进别人的工作流里，让他点一下就行</strong>。不需要找AI、不需要写提示词、不需要调格式——选个原因，填两行，下载。</p>
             <p><strong>技术栈：</strong>Flask + python-docx + 原始Word模板填充，部署在阿里云服务器，支持多人使用（申请单位/申请人/联系电话可配置）。</p>
+            <div class="screenshot-container">
+                <img src="images/退费工具.jpg" alt="退费申请生成器界面" loading="lazy">
+                <div class="screenshot-label">退费申请生成器 - 移动端界面</div>
+            </div>
             <div style="margin-bottom: 16px;">
                 <a href="http://8.163.101.180:5000" class="btn btn-primary" target="_blank">在线体验</a>
             </div>
@@ -324,6 +351,10 @@
                 <li>支持6种补偿策略：无补偿/5元券/10-20元券/补发/部分退款/全额退款</li>
             </ul>
             <p><strong>技术实现：</strong>Flask + DeepSeek/MiMo API，差评分类+话术生成全链路，部署在阿里云服务器。</p>
+            <div class="screenshot-container">
+                <img src="images/差评话术生成器.jpg" alt="差评话术生成器界面" loading="lazy">
+                <div class="screenshot-label">差评话术生成器 - 移动端界面</div>
+            </div>
             <div style="margin-bottom: 16px;">
                 <a href="http://8.163.101.180:5002" class="btn btn-primary" target="_blank">在线体验</a>
             </div>
@@ -349,6 +380,10 @@
                 <li>Rerank重排序（BGE-Reranker-v2-M3），召回精度提升30%</li>
                 <li>评测体系：30题 × 6题型 × 3维度，量化每次优化效果</li>
             </ul>
+            <div class="screenshot-container">
+                <img src="images/RAG智能客服.jpg" alt="RAG智能客服界面" loading="lazy">
+                <div class="screenshot-label">运营商套餐Agent - 智能客服界面</div>
+            </div>
             <div style="margin-bottom: 16px;">
                 <a href="http://8.163.101.180:8001/static/web_ui.html" class="btn btn-primary" target="_blank">在线演示</a>
                 <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="btn btn-ghost" target="_blank">GitHub</a>
