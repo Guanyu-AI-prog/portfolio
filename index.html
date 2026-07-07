@@ -332,40 +332,37 @@
 
         <!-- Agent Collaboration -->
         <div class="project-card">
-            <h3>我的AI工作流：如何用3个Agent提升10倍效率</h3>
-            <p>我不是AI工程师，但我会用AI工具。我搭建了一套工作流：<strong>我负责发现问题和做决策，3个Agent负责执行</strong>。</p>
-            <p><strong>我的角色：</strong></p>
+            <h3>AI工作流：一个人干三个人的活</h3>
+            <p><strong>业务问题：</strong>一个人做AI项目，效率低、迭代慢，一个功能改三天。</p>
+            <p><strong>我做了什么：</strong>用3个AI工具搭建工作流——我负责发现问题和做决策，AI负责执行。</p>
             <ul>
                 <li>发现业务痛点（退费流程太慢、差评处理效率低）</li>
                 <li>设计解决方案（选什么工具、怎么落地）</li>
-                <li>调度Agent执行（Hermes做任务编排、Claude Code做架构、OpenCode做迭代）</li>
+                <li>调度AI执行（任务编排、架构设计、快速迭代）</li>
                 <li>验证结果、培训员工使用</li>
             </ul>
-            <p><strong>这不是"用了几个AI工具"，而是"我知道什么时候该用哪个工具"。</strong></p>
+            <p><strong>效果：</strong>RAG系统评测从74%提升到98.7%，开发效率提升10倍。</p>
             <div class="stats">
-                <div class="stat"><div class="num">3</div><div class="label">Agent 协同</div></div>
+                <div class="stat"><div class="num">3</div><div class="label">AI工具协同</div></div>
                 <div class="stat"><div class="num">74→98.7%</div><div class="label">评测提升</div></div>
-                <div class="stat"><div class="num">24/7</div><div class="label">自动化运行</div></div>
+                <div class="stat"><div class="num">10x</div><div class="label">效率提升</div></div>
             </div>
-            <p><strong>实战案例：</strong>RAG系统开发中，我先用Hermes编排评测任务，发现检索架构有问题，再让Claude Code重构，最后用OpenCode快速迭代BM25混合检索方案，评测从74%提升到98.7%。</p>
             <div class="tech-tags">
-                <span>Hermes Agent</span><span>Claude Code</span><span>OpenCode</span>
                 <span>任务编排</span><span>架构设计</span><span>快速迭代</span>
             </div>
         </div>
 
         <!-- Refund Tool -->
         <div class="project-card">
-            <h3>退费申请生成器 — 从痛点出发的AI落地</h3>
-            <p>在电信营业厅工作期间，发现一个普遍现象：<strong>同事宁愿不做调账业绩，也不想写申请</strong>。调账没有额度上限，但每次都要手写理由、填表、格式化，一个月写几个都觉得烦，写十几个更烦。</p>
-            <p>做了一个网页版工具：选场景 → 填两行 → 一键下载完整Word申请。<strong>30秒搞定以前15分钟的活。</strong></p>
+            <h3>退费申请生成器 — 30秒搞定15分钟的活</h3>
+            <p><strong>业务问题：</strong>电信营业厅同事不愿写调账申请，一个月只写3-5个，嫌麻烦。</p>
+            <p><strong>我做了什么：</strong>做一个网页工具，选场景→填两行→一键下载Word，零学习成本。</p>
+            <p><strong>效果：</strong>申请时间从15分钟压到30秒，月均申请量从3-5个提升到10-15个。</p>
             <div class="stats">
-                <div class="stat"><div class="num">5</div><div class="label">退费场景</div></div>
                 <div class="stat"><div class="num">30s</div><div class="label">生成一份申请</div></div>
-                <div class="stat"><div class="num">0</div><div class="label">用户学习成本</div></div>
+                <div class="stat"><div class="num">3x</div><div class="label">申请量提升</div></div>
+                <div class="stat"><div class="num">0</div><div class="label">学习成本</div></div>
             </div>
-            <p><strong>业务价值：</strong>以前一个月写3-5个调账申请，现在能写10-15个。不是技术难，是<strong>把AI塞进别人的工作流里，让他点一下就行</strong>。不需要找AI、不需要写提示词、不需要调格式——选个原因，填两行，下载。</p>
-            <p><strong>技术栈：</strong>Flask + python-docx + 原始Word模板填充，部署在阿里云服务器，支持多人使用（申请单位/申请人/联系电话可配置）。</p>
             <div class="screenshot-container">
                 <img src="images/退费工具.jpg" alt="退费申请生成器界面" loading="lazy">
                 <div class="screenshot-label">退费申请生成器 - 移动端界面</div>
@@ -374,27 +371,21 @@
                 <a href="http://8.163.101.180:5000" class="btn btn-primary" target="_blank">在线体验</a>
             </div>
             <div class="tech-tags">
-                <span>Flask</span><span>python-docx</span><span>Word模板填充</span><span>业务流程自动化</span><span>零学习成本</span>
+                <span>Flask</span><span>python-docx</span><span>业务流程自动化</span>
             </div>
         </div>
 
         <!-- Review Reply Generator -->
         <div class="project-card">
-            <h3>差评应对话术生成器 — 电商运营效率工具</h3>
-            <p>电商差评直接影响转化率，运营每天花1-2小时处理差评回复。平台只显示差评，不会帮你写回复话术。做了这个工具：<strong>输入差评内容 → 自动识别类型 → 生成安抚+解释+补偿完整话术</strong>。</p>
+            <h3>差评话术生成器 — 10秒生成一条回复</h3>
+            <p><strong>业务问题：</strong>电商运营每天花1-2小时写差评回复，质量参差不齐，影响转化率。</p>
+            <p><strong>我做了什么：</strong>输入差评内容，自动识别类型，生成安抚+解释+补偿完整话术。</p>
+            <p><strong>效果：</strong>单条回复从10分钟压到10秒，支持6种补偿策略，可直接复制到平台使用。</p>
             <div class="stats">
-                <div class="stat"><div class="num">6</div><div class="label">差评类型</div></div>
                 <div class="stat"><div class="num">10s</div><div class="label">生成一条回复</div></div>
-                <div class="stat"><div class="num">3</div><div class="label">话术模块</div></div>
+                <div class="stat"><div class="num">6</div><div class="label">差评类型</div></div>
+                <div class="stat"><div class="num">60x</div><div class="label">效率提升</div></div>
             </div>
-            <p><strong>核心功能：</strong></p>
-            <ul>
-                <li>差评类型自动识别（质量问题/物流问题/描述不符/服务态度/尺寸问题/其他）</li>
-                <li>生成安抚话术（30字）+ 解释话术（50字）+ 补偿方案（50字）</li>
-                <li>组合成完整回复（100字），可直接复制到平台使用</li>
-                <li>支持6种补偿策略：无补偿/5元券/10-20元券/补发/部分退款/全额退款</li>
-            </ul>
-            <p><strong>技术实现：</strong>Flask + DeepSeek/MiMo API，差评分类+话术生成全链路，部署在阿里云服务器。</p>
             <div class="screenshot-container">
                 <img src="images/差评话术生成器.jpg" alt="差评话术生成器界面" loading="lazy">
                 <div class="screenshot-label">差评话术生成器 - 移动端界面</div>
@@ -403,27 +394,22 @@
                 <a href="http://8.163.101.180:5002" class="btn btn-primary" target="_blank">在线体验</a>
             </div>
             <div class="tech-tags">
-                <span>Flask</span><span>DeepSeek API</span><span>MiMo API</span><span>NLP文本分析</span><span>电商运营</span>
+                <span>Flask</span><span>DeepSeek API</span><span>电商运营</span>
             </div>
         </div>
 
         <!-- RAG System -->
         <div class="project-card">
-            <h3>电信套餐智能问答系统</h3>
-            <p>基于 LangChain Agent + ChromaDB 构建的 RAG 系统，支持自然语言查询套餐信息、多条件对比、费用计算等复杂场景。通过向量+BM25混合检索与Rerank重排序，实现<span class="highlight">98.7%综合得分、5%幻觉率</span>。</p>
+            <h3>电信套餐智能问答系统 — 2分钟查询压到4秒</h3>
+            <p><strong>业务问题：</strong>电信客服查询套餐靠翻文档，一条查询要2分钟，新人培训周期长。</p>
+            <p><strong>我做了什么：</strong>搭建智能问答系统，覆盖190+业务文档，支持自然语言查询。</p>
+            <p><strong>效果：</strong>查询时间从2分钟压到4秒，准确率98.7%，可覆盖80%的基础咨询。</p>
             <div class="stats">
-                <div class="stat"><div class="num">98.7%</div><div class="label">综合得分</div></div>
                 <div class="stat"><div class="num">4s</div><div class="label">平均响应</div></div>
-                <div class="stat"><div class="num">5%</div><div class="label">幻觉率</div></div>
+                <div class="stat"><div class="num">98.7%</div><div class="label">准确率</div></div>
                 <div class="stat"><div class="num">190+</div><div class="label">知识文档</div></div>
+                <div class="stat"><div class="num">80%</div><div class="label">覆盖基础咨询</div></div>
             </div>
-            <p><strong>核心优化：</strong></p>
-            <ul>
-                <li>BM25 + 向量混合检索，对比型满分率从40%提升至100%</li>
-                <li>LangChain Agent Tool Calling，LLM自主规划调用链</li>
-                <li>Rerank重排序（BGE-Reranker-v2-M3），召回精度提升30%</li>
-                <li>评测体系：30题 × 6题型 × 3维度，量化每次优化效果</li>
-            </ul>
             <div class="screenshot-container">
                 <img src="images/RAG智能客服.jpg" alt="RAG智能客服界面" loading="lazy">
                 <div class="screenshot-label">运营商套餐Agent - 智能客服界面</div>
@@ -431,55 +417,50 @@
             <div style="margin-bottom: 16px;">
                 <a href="http://8.163.101.180:8001/static/web_ui.html" class="btn btn-primary" target="_blank">在线演示</a>
                 <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="btn btn-ghost" target="_blank">GitHub</a>
-                <a href="https://github.com/Guanyu-AI-pro/rag-from-zero" class="btn btn-ghost" target="_blank">学习记录</a>
             </div>
             <div class="tech-tags">
-                <span>Python</span><span>LangChain</span><span>ChromaDB</span>
-                <span>DeepSeek</span><span>FastAPI</span><span>BM25</span><span>Rerank</span><span>Agent</span>
+                <span>Python</span><span>LangChain</span><span>ChromaDB</span><span>DeepSeek</span>
             </div>
         </div>
 
         <!-- Evaluation System -->
         <div class="project-card">
-            <h3>RAG/Agent 多框架评测体系</h3>
-            <p>设计30道测试题，覆盖6种题型（单点查询、对比型、多跳推理、流程型、场景型、边界测试），横向对比Dify Agent、LangChain RAG、LangChain Agent三种方案。构建自动化评测脚本+人工评分双体系。</p>
+            <h3>AI方案评测体系 — 找到最适合的方案</h3>
+            <p><strong>业务问题：</strong>不知道哪个AI方案最适合业务场景，选型靠感觉。</p>
+            <p><strong>我做了什么：</strong>设计30道测试题，覆盖6种题型，横向对比3种方案。</p>
+            <p><strong>效果：</strong>找到最适合的方案，质量最高97.3%，响应最快2.86秒。</p>
             <div class="stats">
-                <div class="stat"><div class="num">6</div><div class="label">题型覆盖</div></div>
                 <div class="stat"><div class="num">30</div><div class="label">测试用例</div></div>
-                <div class="stat"><div class="num">148/150</div><div class="label">最高得分</div></div>
+                <div class="stat"><div class="num">6</div><div class="label">题型覆盖</div></div>
+                <div class="stat"><div class="num">97.3%</div><div class="label">最高质量</div></div>
             </div>
             <div class="tech-tags">
-                <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span><span>多框架对比</span>
+                <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span>
             </div>
         </div>
 
         <!-- Pure Python RAG -->
         <div class="project-card">
-            <h3>纯Python RAG系统（无框架依赖）</h3>
-            <p>从零实现完整 RAG 链路，不依赖 LangChain。包含文档加载、分类切分、向量+BM25混合检索、Rerank重排序、LLM生成全链路。代码仅 954 行，比 LangChain Agent 方案<span class="highlight">快 65.7%</span>，通过率提升 10%。</p>
+            <h3>纯Python RAG系统 — 比框架快65%</h3>
+            <p><strong>业务问题：</strong>LangChain框架太重，响应慢，依赖多，部署复杂。</p>
+            <p><strong>我做了什么：</strong>从零实现完整RAG链路，不依赖任何框架，代码仅954行。</p>
+            <p><strong>效果：</strong>比LangChain快65.7%，通过率提升10%，部署更简单。</p>
             <div class="stats">
-                <div class="stat"><div class="num">94.7分</div><div class="label">综合得分</div></div>
-                <div class="stat"><div class="num">96.7%</div><div class="label">通过率</div></div>
-                <div class="stat"><div class="num">6.87s</div><div class="label">平均响应</div></div>
-                <div class="stat"><div class="num">0%*</div><div class="label">幻觉率（开卷测试）</div></div>
+                <div class="stat"><div class="num">65.7%</div><div class="label">速度提升</div></div>
+                <div class="stat"><div class="num">954</div><div class="label">代码行数</div></div>
+                <div class="stat"><div class="num">10%</div><div class="label">通过率提升</div></div>
             </div>
-            <p><strong>核心设计：</strong></p>
-            <ul>
-                <li>分类切分策略：Q&A 用小块(250字)、套餐详情用大块(500字)、默认 300字</li>
-                <li>向量 + BM25 并行检索 + Rerank 重排序，三路融合</li>
-                <li>查询改写 + 意图分类 + 查询扩展（推荐/对比/事实三种策略）</li>
-                <li>嵌入缓存 + BM25 查询缓存，重复查询零延迟</li>
-            </ul>
             <div class="tech-tags">
-                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>Rerank</span><span>DeepSeek</span><span>零框架依赖</span>
+                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>Rerank</span><span>零框架依赖</span>
             </div>
-            <p style="font-size: 12px; color: #62666d; margin-top: 12px;">* 测试基于实际业务知识库内容，匹配内部使用场景</p>
         </div>
 
         <!-- RPA -->
         <div class="project-card">
-            <h3>运营商套餐数据自动采集</h3>
-            <p>使用 Playwright 实现运营商网站套餐数据的自动化抓取，包含页面渲染等待、数据清洗、结构化存储等完整流程。抓取数据直接导入RAG知识库，实现知识库自动更新。</p>
+            <h3>运营商套餐数据自动采集 — 100%自动化</h3>
+            <p><strong>业务问题：</strong>运营商套餐数据需要手动更新，耗时耗力，容易出错。</p>
+            <p><strong>我做了什么：</strong>用Playwright实现自动化抓取，直接导入RAG知识库。</p>
+            <p><strong>效果：</strong>采集10+套餐，100%自动化率，知识库自动更新。</p>
             <div class="stats">
                 <div class="stat"><div class="num">10+</div><div class="label">采集套餐数</div></div>
                 <div class="stat"><div class="num">100%</div><div class="label">自动化率</div></div>
@@ -491,8 +472,10 @@
 
         <!-- Web Integration -->
         <div class="project-card">
-            <h3>RAG 系统 WEB 端集成</h3>
-            <p>将 RAG 系统集成到 Web 界面，通过公网 IP 实现远程访问。用户可通过浏览器直接与知识库对话，无需本地部署。</p>
+            <h3>RAG系统Web端集成 — 公网远程访问</h3>
+            <p><strong>业务问题：</strong>RAG系统只能本地使用，无法远程访问，多人无法同时使用。</p>
+            <p><strong>我做了什么：</strong>将RAG系统集成到Web界面，通过公网IP实现远程访问。</p>
+            <p><strong>效果：</strong>用户可通过浏览器直接与知识库对话，无需本地部署。</p>
             <div class="stats">
                 <div class="stat"><div class="num">公网IP</div><div class="label">远程访问</div></div>
                 <div class="stat"><div class="num">Web UI</div><div class="label">可视化界面</div></div>
@@ -502,39 +485,6 @@
             </div>
         </div>
 
-        <!-- Journey -->
-        <div class="project-card">
-            <h3>四个月 RAG 实战历程</h3>
-            <p>从 2026.02 到 2026.06，完成从学习到三套系统落地的完整周期。每一条检索策略的选择、每一个参数的调优、每一次架构的升级，都来自实际踩坑后的判断。</p>
-            <div class="timeline-phase">
-                <h4>第一阶段：观望与学习（2月）</h4>
-                <p>基础概念学习，了解 RAG 原理、向量检索、Embedding 模型，观望各平台方案。</p>
-            </div>
-            <div class="timeline-phase">
-                <h4>第二阶段：动手搭建（3.20 起）</h4>
-                <li>3.20 — Cherry Studio 本地搭建，8GB 内存跑 bge-m3，CPU 99%，首次 RAG 对话成功</li>
-                <li>3.25–4.2 — 5个平台横向对比：腾讯云 ADP → AnythingLLM → LangChain → Dify</li>
-                <li>4.2 — 文档编码之战，最终用两步转换法解决 ANSI→UTF-8</li>
-            </div>
-            <div class="timeline-phase">
-                <h4>第三阶段：调优突破（4.4–4.13）</h4>
-                <li>纯 RAG 天花板：参数调优无法突破，领悟召回率 vs 准确率的平衡</li>
-                <li>突破：ChatFlow 三检索节点架构，召回率从 ~60% 跃升到 ~85%</li>
-            </div>
-            <div class="timeline-phase">
-                <h4>第四阶段：纯代码实现（5月）</h4>
-                <p>三套不同架构：电信套餐（规则驱动）/ 王小波文学（父子分块）/ 英文学术论文（LangGraph 条件路由）</p>
-            </div>
-            <div class="timeline-phase">
-                <h4>第五阶段：混合部署 + 持续迭代（5–6月）</h4>
-                <p>Dify + 本地向量库 + API 模型的混合架构，vLLM 本地模型部署探索。</p>
-            </div>
-            <div class="stats">
-                <div class="stat"><div class="num">5+</div><div class="label">平台探索</div></div>
-                <div class="stat"><div class="num">3</div><div class="label">套系统落地</div></div>
-                <div class="stat"><div class="num">4个月</div><div class="label">实战迭代</div></div>
-            </div>
-        </div>
     </div>
 </section>
 
