@@ -1,698 +1,697 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>郑裕坚 - AI落地实践者</title>
-    <meta name="description" content="AI落地实践者，专注业务效率优化。退费工具、差评话术生成器、RAG智能客服等项目展示。">
-    <meta property="og:title" content="郑裕坚 - AI落地实践者">
-    <meta property="og:description" content="AI落地实践者，三个AI工具：退费文档生成、差评话术生成、RAG智能客服">
-    <meta property="og:image" content="https://guanyu-ai-prog.github.io/portfolio/images/logo.jpg">
-    <meta property="og:url" content="https://guanyu-ai-prog.github.io/portfolio/">
-    <meta property="og:type" content="website">
-    <link rel="icon" type="image/jpeg" href="https://guanyu-ai-prog.github.io/portfolio/images/退费工具.jpg">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            color: #d0d6e0; background: #08090a; line-height: 1.6;
-            font-feature-settings: 'cv01', 'ss03';
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>郑裕坚 · AI落地实践者</title>
+<meta name="description" content="从电信营业员到独立开发3个AI应用，半年自学Python/LangChain/RAG，解决真实业务问题。">
+<meta property="og:title" content="郑裕坚 · AI落地实践者">
+<meta property="og:description" content="半年时间，从电信营业员到独立开发3个AI应用">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://guanyu-ai-prog.github.io/portfolio/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#08090f;--surface:#0f1018;--ink:#e8edf5;--muted:#7a7f8a;--dim:#4a4e58;
+  --accent:#22e3ff;--accent-dim:rgba(34,227,255,0.15);--border:rgba(255,255,255,0.07);
+  --font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;background:var(--bg);color:var(--ink);font-family:var(--font-body)}
+body{background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-dim);color:var(--ink)}
 
-        /* Container */
-        .container { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+/* Grain overlay */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:0.035}
 
-        /* Nav */
-        nav {
-            position: sticky; top: 0; z-index: 100;
-            background: rgba(8,9,10,0.85); backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        nav .container {
-            display: flex; align-items: center; justify-content: space-between;
-            height: 56px;
-        }
-        nav .logo {
-            font-size: 14px; font-weight: 510; color: #f7f8f8;
-            letter-spacing: -0.14px;
-        }
-        nav .nav-links { display: flex; gap: 24px; }
-        nav .nav-links a {
-            font-size: 13px; font-weight: 510; color: #8a8f98;
-            text-decoration: none; transition: color 0.2s;
-        }
-        nav .nav-links a:hover { color: #f7f8f8; }
+/* Vignette on hero */
+.hero-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,transparent 0%,rgba(8,9,15,0.6) 70%,rgba(8,9,15,0.95) 100%);pointer-events:none;z-index:2}
 
-        /* Hero */
-        .hero {
-            padding: 100px 24px 80px; text-align: center;
-            background: radial-gradient(ellipse at 50% 0%, rgba(94,106,210,0.15) 0%, rgba(94,106,210,0.03) 40%, transparent 70%);
-        }
-        .hero h1 {
-            font-size: 48px; font-weight: 510; color: #f7f8f8;
-            letter-spacing: -1.056px; line-height: 1.0;
-            margin-bottom: 16px;
-        }
-        .hero .subtitle {
-            font-size: 18px; font-weight: 400; color: #8a8f98;
-            letter-spacing: -0.165px; max-width: 500px; margin: 0 auto 32px;
-        }
-        .hero .tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-        .hero .tag {
-            font-size: 12px; font-weight: 510; color: #d0d6e0;
-            padding: 0 10px; height: 28px; display: inline-flex; align-items: center;
-            border-radius: 9999px; border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.02);
-        }
+/* Canvas */
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
 
-        /* Sections */
-        section { padding: 64px 0; }
-        .section-header { margin-bottom: 40px; }
-        .section-header h2 {
-            font-size: 24px; font-weight: 400; color: #f7f8f8;
-            letter-spacing: -0.288px; margin-bottom: 8px;
-        }
-        .section-header p {
-            font-size: 15px; color: #62666d; letter-spacing: -0.165px;
-        }
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:rgba(8,9,15,0.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+nav .logo{font-family:var(--font-mono);font-size:13px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent)}
+nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:300;transition:color 0.2s}
+nav a:hover{color:var(--ink)}
+nav .links{display:flex;gap:28px}
 
-        /* Project Cards */
-        .project-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(94,106,210,0.35);
-            border-radius: 12px; padding: 32px;
-            margin-bottom: 16px; transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(94,106,210,0.15), 0 0 40px rgba(94,106,210,0.08), inset 0 1px 0 rgba(94,106,210,0.3);
-        }
-        .project-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(94,106,210,0.6);
-            box-shadow: 0 0 30px rgba(94,106,210,0.25), 0 0 60px rgba(94,106,210,0.15), 0 0 90px rgba(94,106,210,0.08), inset 0 1px 0 rgba(94,106,210,0.4);
-        }
-        .project-card h3 {
-            font-size: 17px; font-weight: 590; color: #f7f8f8;
-            letter-spacing: -0.204px; margin-bottom: 12px;
-        }
-        .project-card p { font-size: 15px; color: #8a8f98; margin-bottom: 16px; letter-spacing: -0.165px; }
-        .project-card ul {
-            margin-left: 20px; margin-bottom: 16px; font-size: 15px; color: #8a8f98;
-        }
-        .project-card li { margin-bottom: 6px; }
-        .project-card strong { color: #d0d6e0; font-weight: 590; }
-        .highlight { color: #7170ff; font-weight: 590; }
+/* Sections */
+section{padding:100px 40px;max-width:1200px;margin:0 auto}
+@media(max-width:768px){section{padding:60px 20px}}
 
-        /* Stats */
-        .stats { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
-        .stat {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(94,106,210,0.25);
-            border-radius: 8px; padding: 14px 20px;
-            text-align: center; flex: 1; min-width: 100px;
-            box-shadow: 0 0 12px rgba(94,106,210,0.1);
-        }
-        .stat .num {
-            font-size: 20px; font-weight: 510; color: #f7f8f8;
-            letter-spacing: -0.24px; font-feature-settings: 'cv01', 'ss03';
-        }
-        .stat .label {
-            font-size: 12px; font-weight: 400; color: #62666d;
-            margin-top: 2px;
-        }
+/* Hero */
+#hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px}
+.hero-content{position:relative;z-index:3}
+.hero-content h1{font-size:clamp(40px,7vw,80px);font-weight:800;letter-spacing:-0.04em;line-height:0.92;margin-bottom:24px;color:var(--ink)}
+.hero-content .subtitle{font-size:clamp(14px,2vw,18px);font-weight:300;color:var(--muted);line-height:1.65;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.hero-tags span{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;border:1px solid var(--border);border-radius:4px;color:var(--muted);background:rgba(34,227,255,0.04)}
+.hero-tags span .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
 
-        /* Tags */
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
-        .tech-tags span {
-            font-size: 12px; font-weight: 510; color: #8a8f98;
-            padding: 0 8px; height: 24px; display: inline-flex; align-items: center;
-            border-radius: 2px; background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.05);
-        }
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
-        /* Screenshot */
-        .screenshot-container {
-            margin: 20px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: #1a1a1a;
-        }
-        .screenshot-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-        .screenshot-label {
-            text-align: center;
-            padding: 8px;
-            font-size: 12px;
-            color: #8a8f98;
-            background: rgba(255,255,255,0.03);
-        }
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px}
+@media(max-width:768px){.about-grid{grid-template-columns:1fr}}
+.about-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:32px}
+.about-card h3{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.about-card p{font-weight:300;font-size:15px;line-height:1.65;color:var(--muted)}
+.about-card .highlight{color:var(--ink);font-weight:400}
 
-        /* Buttons */
-        .btn {
-            display: inline-flex; align-items: center; gap: 6px;
-            font-size: 13px; font-weight: 510; text-decoration: none;
-            padding: 7px 14px; border-radius: 6px; transition: all 0.2s;
-            margin-right: 6px; margin-bottom: 6px;
-        }
-        .btn-primary {
-            background: #5e6ad2; color: #ffffff;
-        }
-        .btn-primary:hover { background: #828fff; }
-        .btn-ghost {
-            background: rgba(255,255,255,0.02); color: #d0d6e0;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-        .btn-ghost:hover { background: rgba(255,255,255,0.05); }
+/* Section label */
+.section-label{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
 
-        /* Insight cards */
-        .insight-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(94,106,210,0.15);
-            border-radius: 8px; padding: 24px;
-            margin-bottom: 8px;
-            box-shadow: 0 0 10px rgba(94,106,210,0.06), inset 0 1px 0 rgba(94,106,210,0.1);
-        }
-        .insight-card:hover {
-            border-color: rgba(94,106,210,0.3);
-            box-shadow: 0 0 20px rgba(94,106,210,0.12), inset 0 1px 0 rgba(94,106,210,0.2);
-        }
-        .insight-card h4 {
-            font-size: 15px; font-weight: 590; color: #f7f8f8;
-            letter-spacing: -0.165px; margin-bottom: 8px;
-        }
-        .insight-card p { font-size: 14px; color: #8a8f98; letter-spacing: -0.13px; }
-        .insight-card strong { color: #d0d6e0; }
+/* Section title */
+.section-title{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-0.03em;line-height:1;margin-bottom:12px;color:var(--ink)}
+.section-desc{font-weight:300;font-size:15px;line-height:1.65;color:var(--muted);max-width:600px;margin-bottom:48px}
 
-        /* Skills grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; }
-        .skill-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(94,106,210,0.15);
-            border-radius: 8px; padding: 20px;
-            box-shadow: 0 0 10px rgba(94,106,210,0.06), inset 0 1px 0 rgba(94,106,210,0.1);
-            transition: all 0.3s;
-        }
-        .skill-item:hover {
-            border-color: rgba(94,106,210,0.3);
-            box-shadow: 0 0 20px rgba(94,106,210,0.12), inset 0 1px 0 rgba(94,106,210,0.2);
-        }
-        .skill-item h4 {
-            font-size: 14px; font-weight: 590; color: #f7f8f8;
-            margin-bottom: 4px; letter-spacing: -0.13px;
-        }
-        .skill-item .desc { font-size: 13px; color: #62666d; margin-bottom: 12px; }
-        .skill-bar {
-            background: rgba(255,255,255,0.05); height: 4px;
-            border-radius: 2px; overflow: hidden;
-        }
-        .skill-bar-fill { height: 100%; border-radius: 2px; background: #5e6ad2; }
+/* Project layouts */
+.project{margin-bottom:48px;border-radius:12px;background:var(--surface);border:1px solid var(--border);overflow:hidden}
 
-        /* Timeline */
-        .timeline-phase { margin-bottom: 20px; }
-        .timeline-phase h4 {
-            font-size: 14px; font-weight: 590; color: #f7f8f8;
-            margin-bottom: 6px; letter-spacing: -0.13px;
-        }
-        .timeline-phase p, .timeline-phase li {
-            font-size: 14px; color: #8a8f98; letter-spacing: -0.13px;
-            margin-bottom: 4px;
-        }
+/* Layout A - Split */
+.project-split{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:768px){.project-split{grid-template-columns:1fr}}
+.project-split .project-image{position:relative;overflow:hidden;min-height:280px;background:var(--bg)}
+.project-split .project-image img{width:100%;height:100%;object-fit:cover;display:block}
+.project-split .project-body{padding:40px;display:flex;flex-direction:column;justify-content:center}
+.project-split .project-body h3{font-size:24px;font-weight:800;letter-spacing:-0.02em;margin-bottom:12px;color:var(--ink)}
+.project-split .project-body p{font-weight:300;font-size:15px;line-height:1.65;color:var(--muted);margin-bottom:20px}
 
-        /* Contact */
-        .contact-section { text-align: center; padding: 80px 0; }
-        .contact-section h2 {
-            font-size: 32px; font-weight: 510; color: #f7f8f8;
-            letter-spacing: -0.704px; margin-bottom: 12px;
-        }
-        .contact-section .sub {
-            font-size: 16px; color: #62666d; margin-bottom: 32px;
-        }
-        .contact-info {
-            font-size: 14px; color: #8a8f98; margin-top: 24px;
-        }
+/* Layout B - Full-width stats */
+.project-full{padding:40px}
+.project-full h3{font-size:22px;font-weight:800;letter-spacing:-0.02em;margin-bottom:8px;color:var(--ink)}
+.project-full .desc{font-weight:300;font-size:15px;color:var(--muted);margin-bottom:24px}
+.stats-row{display:flex;gap:32px;margin-bottom:24px;flex-wrap:wrap}
+.stat-item .stat-num{font-family:var(--font-mono);font-size:28px;font-weight:500;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat-item .stat-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-top:4px}
 
-        /* Footer */
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding: 32px 0; text-align: center;
-        }
-        footer p { font-size: 13px; color: #62666d; }
-        footer a { color: #7170ff; text-decoration: none; }
+/* Layout C - Highlight */
+.project-highlight{padding:48px;position:relative}
+.project-highlight::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.project-highlight h3{font-size:28px;font-weight:800;letter-spacing:-0.03em;margin-bottom:12px;color:var(--ink)}
+.project-highlight .desc{font-weight:300;font-size:15px;line-height:1.65;color:var(--muted);margin-bottom:32px;max-width:700px}
+.arch-diagram{overflow-x:auto;padding:20px 0}
+.arch-diagram svg{display:block;margin:0 auto}
 
-        /* Divider */
-        .divider {
-            height: 1px; background: rgba(255,255,255,0.05);
-            margin: 0; border: none;
-        }
+/* Tech tags */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tags span{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;padding:5px 12px;border:1px solid var(--border);border-radius:3px;color:var(--dim);background:rgba(34,227,255,0.03)}
 
-        /* Responsive */
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 32px; letter-spacing: -0.704px; }
-            .hero .subtitle { font-size: 16px; }
-            .hero { padding: 64px 24px 48px; }
-            section { padding: 48px 0; }
-            .project-card { padding: 24px; }
-            .stats { flex-direction: column; }
-            .stat { min-width: auto; }
-            nav .nav-links { gap: 16px; }
-            .contact-section h2 { font-size: 24px; }
-        }
-    </style>
+/* Buttons */
+.btn-group{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;padding:10px 20px;border-radius:4px;text-decoration:none;transition:all 0.2s}
+.btn-primary{background:var(--accent);color:var(--bg);border:1px solid var(--accent)}
+.btn-primary:hover{background:rgba(34,227,255,0.85)}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}
+.btn-ghost:hover{color:var(--ink);border-color:rgba(255,255,255,0.15)}
+
+/* Bento grid - Insights */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+@media(max-width:768px){.bento{grid-template-columns:1fr}}
+.bento-card{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:28px;transition:border-color 0.2s}
+.bento-card:hover{border-color:rgba(34,227,255,0.2)}
+.bento-card.span-2{grid-column:span 2}
+@media(max-width:768px){.bento-card.span-2{grid-column:span 1}}
+.bento-card h4{font-size:16px;font-weight:800;letter-spacing:-0.01em;margin-bottom:10px;color:var(--ink)}
+.bento-card .quote{font-weight:300;font-size:14px;line-height:1.6;color:var(--muted)}
+.bento-card .quote strong{color:var(--ink);font-weight:400}
+
+/* Skills */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:48px}
+.skill-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:20px}
+.skill-item .skill-name{font-weight:400;font-size:14px;margin-bottom:8px;color:var(--ink)}
+.skill-bar{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
+.skill-bar-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 0.8s ease}
+
+/* Tech stack */
+.tech-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.tech-tag{font-family:var(--font-mono);font-size:13px;letter-spacing:0.04em;padding:8px 18px;border:1px solid var(--border);border-radius:4px;color:var(--muted);background:var(--surface)}
+
+/* Contact */
+.contact{padding:80px 40px;text-align:center;max-width:600px;margin:0 auto}
+.contact p{font-weight:300;font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:24px}
+.contact a{color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(34,227,255,0.3);padding-bottom:2px;transition:border-color 0.2s}
+.contact a:hover{border-color:var(--accent)}
+
+/* Footer */
+footer{text-align:center;padding:40px;border-top:1px solid var(--border)}
+footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color:var(--dim);text-transform:uppercase}
+
+/* prefers-reduced-motion */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
 </head>
 <body>
 
+<!-- Grain overlay -->
+<svg class="grain" width="100%" height="100%"><filter id="grain-filter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#grain-filter)"/></svg>
+
 <!-- Nav -->
 <nav>
-    <div class="container">
-        <span class="logo">郑裕坚</span>
-        <div class="nav-links">
-            <a href="#about">关于我</a>
-            <a href="#projects">项目</a>
-            <a href="#insights">洞察</a>
-            <a href="#skills">能力</a>
-            <a href="https://github.com/Guanyu-AI-pro" target="_blank">GitHub</a>
-        </div>
-    </div>
+  <div class="logo">ZYJ</div>
+  <div class="links">
+    <a href="#about">关于</a>
+    <a href="#projects">项目</a>
+    <a href="#insights">洞察</a>
+    <a href="#skills">技能</a>
+    <a href="#contact">联系</a>
+  </div>
 </nav>
 
 <!-- Hero -->
-<div class="hero">
-    <h1>半年时间，从电信营业员到独立开发3个AI应用</h1>
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-vignette"></div>
+  <div class="hero-content reveal">
+    <h1>半年时间，从电信营业员<br>到独立开发3个AI应用</h1>
     <p class="subtitle">AI落地实践者 · 非科班自学 · 解决真实业务问题</p>
-    <div class="tags">
-        <span class="tag">零成本Agent部署</span>
-        <span class="tag">退费文档自动生成</span>
-        <span class="tag">差评话术生成</span>
-        <span class="tag">RAG智能客服</span>
+    <div class="hero-tags">
+      <span><span class="dot"></span>零成本Agent部署</span>
+      <span><span class="dot"></span>退费文档自动生成</span>
+      <span><span class="dot"></span>差评话术生成</span>
+      <span><span class="dot"></span>RAG智能客服</span>
     </div>
-</div>
-
-<div class="divider"></div>
+  </div>
+</section>
 
 <!-- About -->
 <section id="about">
-    <div class="container">
-        <div class="section-header">
-            <h2>关于我</h2>
-            <p>非科班出身，但我能用AI解决业务问题</p>
-        </div>
-        <div class="project-card">
-            <h3>我的背景</h3>
-            <ul>
-                <li><strong>学历：</strong>非全日制本科（大专+自考本科）</li>
-                <li><strong>之前工作：</strong>电信营业厅业务员，卖手机+套餐</li>
-                <li><strong>转AI时间：</strong>2026年3月，自学至今4个月</li>
-                <li><strong>技术栈：</strong>Python、LangChain、Flask、RAG、API调用</li>
-            </ul>
-            <p><strong>为什么我能做好AI落地？</strong></p>
-            <ul>
-                <li>我在业务一线干过，知道什么是真正的痛点</li>
-                <li>我不是科班出身，所以更注重"能用"而不是"完美"</li>
-                <li>我自学4个月做出3个工具，证明我有快速学习和落地的能力</li>
-            </ul>
-            <p><strong>我的定位：</strong>不是AI工程师，是AI落地实践者。我能帮你找到业务里最该用AI的地方，选对工具，快速落地，培训员工用起来。</p>
-        </div>
+  <div class="section-label reveal">Background</div>
+  <h2 class="section-title reveal">AI落地实践者，不是AI工程师</h2>
+  <div class="about-grid">
+    <div class="about-card reveal">
+      <h3>我的背景</h3>
+      <p>
+        <span class="highlight">非全日制本科</span>（大专+自考本科）<br>
+        <span class="highlight">电信营业厅业务员</span><br>
+        2026年3月自学至今<br>
+        Python / LangChain / Flask / RAG / API
+      </p>
     </div>
+    <div class="about-card reveal">
+      <h3>为什么能做AI落地</h3>
+      <p>
+        <span class="highlight">业务线经验</span>：知道营业厅真实痛点在哪<br>
+        <span class="highlight">实用优先</span>：不追求完美架构，先跑起来再说<br>
+        <span class="highlight">4个月3个工具</span>：退费生成器、差评话术、RAG客服
+      </p>
+    </div>
+  </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- Projects -->
 <section id="projects">
-    <div class="container">
-        <div class="section-header">
-            <h2>项目作品</h2>
-            <p>从需求到落地的完整链路，代码借助 AI 辅助，架构判断来自实际踩坑</p>
-        </div>
+  <h2 class="section-title reveal">项目</h2>
+  <p class="section-desc reveal">从营业厅柜台到代码编辑器，每个项目都从真实的业务痛点出发。</p>
 
-        <!-- Zero-cost Agent Guide -->
-        <div class="project-card">
-            <h3>零成本AI Agent搭建指南 — 从零到微信可用</h3>
-            <p><strong>业务问题：</strong>企业想用AI Agent但部署门槛高，市面教程要么收费要么只讲一半。</p>
-            <p><strong>我做了什么：</strong>写了一份完整SOP，覆盖获取云电脑→部署Agent→配置API→对接微信，全程零成本，面向零基础用户。</p>
-            <p><strong>效果：</strong>普通用户30分钟跑完全流程，无需编程基础。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">0元</div><div class="label">部署成本</div></div>
-                <div class="stat"><div class="num">30min</div><div class="label">跑完全流程</div></div>
-                <div class="stat"><div class="num">全流程</div><div class="label">Step-by-Step</div></div>
-            </div>
-            <div class="tech-tags">
-                <span>Agent部署</span><span>微信对接</span><span>SOP文档</span>
-            </div>
-            <div style="margin-top: 16px;">
-                <a href="https://github.com/Guanyu-AI-prog/ai-agent-deploy-guide" class="btn btn-primary" target="_blank">📖 在线阅读</a>
-            </div>
-        </div>
-
-        <!-- Agent Collaboration -->
-        <div class="project-card">
-            <h3>AI工作流：一个人干三个人的活</h3>
-            <p><strong>业务问题：</strong>一个人做AI项目，效率低、迭代慢，一个功能改三天。</p>
-            <p><strong>我做了什么：</strong>用3个AI工具搭建工作流——我负责发现问题和做决策，AI负责执行。</p>
-            <ul>
-                <li>发现业务痛点（退费流程太慢、差评处理效率低）</li>
-                <li>设计解决方案（选什么工具、怎么落地）</li>
-                <li>调度AI执行（任务编排、架构设计、快速迭代）</li>
-                <li>验证结果、培训员工使用</li>
-            </ul>
-            <p><strong>效果：</strong>RAG系统评测从74%提升到98.7%，开发效率提升10倍。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">3</div><div class="label">AI工具协同</div></div>
-                <div class="stat"><div class="num">74→98.7%</div><div class="label">评测提升</div></div>
-                <div class="stat"><div class="num">10x</div><div class="label">效率提升</div></div>
-            </div>
-            <div class="tech-tags">
-                <span>任务编排</span><span>架构设计</span><span>快速迭代</span>
-            </div>
-        </div>
-
-        <!-- Refund Tool -->
-        <div class="project-card">
-            <h3>退费申请生成器 — 30秒搞定15分钟的活</h3>
-            <p><strong>业务问题：</strong>电信营业厅同事不愿写调账申请，一个月只写3-5个，嫌麻烦。</p>
-            <p><strong>我做了什么：</strong>做一个网页工具，选场景→填两行→一键下载Word，零学习成本。</p>
-            <p><strong>效果：</strong>申请时间从15分钟压到30秒，月均申请量从3-5个提升到10-15个。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">30s</div><div class="label">生成一份申请</div></div>
-                <div class="stat"><div class="num">3x</div><div class="label">申请量提升</div></div>
-                <div class="stat"><div class="num">0</div><div class="label">学习成本</div></div>
-            </div>
-            <div class="screenshot-container">
-                <img src="images/退费工具.jpg" alt="退费申请生成器界面" loading="lazy">
-                <div class="screenshot-label">退费申请生成器 - 移动端界面</div>
-            </div>
-            <div style="margin-bottom: 16px;">
-                <a href="http://8.163.101.180:5000" class="btn btn-primary" target="_blank">在线体验</a>
-            </div>
-            <div class="tech-tags">
-                <span>Flask</span><span>python-docx</span><span>业务流程自动化</span>
-            </div>
-        </div>
-
-        <!-- Review Reply Generator -->
-        <div class="project-card">
-            <h3>差评话术生成器 — 10秒生成一条回复</h3>
-            <p><strong>业务问题：</strong>电商运营每天花1-2小时写差评回复，质量参差不齐，影响转化率。</p>
-            <p><strong>我做了什么：</strong>输入差评内容，自动识别类型，生成安抚+解释+补偿完整话术。</p>
-            <p><strong>效果：</strong>单条回复从10分钟压到10秒，支持6种补偿策略，可直接复制到平台使用。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">10s</div><div class="label">生成一条回复</div></div>
-                <div class="stat"><div class="num">6</div><div class="label">差评类型</div></div>
-                <div class="stat"><div class="num">60x</div><div class="label">效率提升</div></div>
-            </div>
-            <div class="screenshot-container">
-                <img src="images/差评话术生成器.jpg" alt="差评话术生成器界面" loading="lazy">
-                <div class="screenshot-label">差评话术生成器 - 移动端界面</div>
-            </div>
-            <div style="margin-bottom: 16px;">
-                <a href="http://8.163.101.180:5002" class="btn btn-primary" target="_blank">在线体验</a>
-            </div>
-            <div class="tech-tags">
-                <span>Flask</span><span>DeepSeek API</span><span>电商运营</span>
-            </div>
-        </div>
-
-        <!-- RAG System -->
-        <div class="project-card">
-            <h3>电信套餐智能问答系统 — 2分钟查询压到4秒</h3>
-            <p><strong>业务问题：</strong>电信客服查询套餐靠翻文档，一条查询要2分钟，新人培训周期长。</p>
-            <p><strong>我做了什么：</strong>搭建智能问答系统，覆盖190+业务文档，支持自然语言查询。</p>
-            <p><strong>效果：</strong>查询时间从2分钟压到4秒，准确率98.7%，可覆盖80%的基础咨询。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">4s</div><div class="label">平均响应</div></div>
-                <div class="stat"><div class="num">98.7%</div><div class="label">准确率</div></div>
-                <div class="stat"><div class="num">190+</div><div class="label">知识文档</div></div>
-                <div class="stat"><div class="num">80%</div><div class="label">覆盖基础咨询</div></div>
-            </div>
-            <div class="screenshot-container">
-                <img src="images/RAG智能客服.jpg" alt="RAG智能客服界面" loading="lazy">
-                <div class="screenshot-label">运营商套餐Agent - 智能客服界面</div>
-            </div>
-            <p><strong>系统架构：</strong></p>
-            <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:8px;font-size:12px;line-height:1.6;overflow-x:auto;margin:8px 0">用户提问 → 查询改写 → 意图分类(推荐/对比/事实) → 查询扩展
-                                ↓
-              ┌───────────────┬───────────────┐
-              │  向量检索       │  BM25检索      │  ← 并行双路
-              │ bge-large-zh   │ jieba分词      │
-              │ Top-8          │ BM25 Okapi Top-3│
-              └───────────────┴───────────────┘
-                              ↓ 合并去重
-                   bge-reranker-v2-m3 重排序
-                              ↓
-                      LLM 生成回答</pre>
-            <p><strong>分类型切分：</strong>Q&A用小块(250字)、套餐详情用大块(500字)、默认300字</p>
-            <div style="margin-bottom: 16px;">
-                <a href="http://8.163.101.180:8001/static/web_ui.html" class="btn btn-primary" target="_blank">在线演示</a>
-                <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="btn btn-ghost" target="_blank">GitHub</a>
-            </div>
-            <div class="tech-tags">
-                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span>
-            </div>
-        </div>
-
-        <!-- Evaluation System -->
-        <div class="project-card">
-            <h3>RAG检索质量评测体系 — 用数据驱动每轮优化</h3>
-            <p><strong>业务问题：</strong>不知道哪种RAG检索方案最好，调参靠感觉。</p>
-            <p><strong>我做了什么：</strong>设计30道测试题，覆盖6种题型，横向对比Dify/纯Python/LangChain三种方案。</p>
-            <p><strong>效果：</strong>找到最优方案，准确率98.7%，响应最快2.86秒。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">6</div><div class="label">评测维度</div></div>
-                <div class="stat"><div class="num">30</div><div class="label">测试用例</div></div>
-                <div class="stat"><div class="num">3</div><div class="label">方案对比</div></div>
-            </div>
-            <p><strong>评测维度：</strong></p>
-            <ul>
-                <li>准确率 — 回答是否正确匹配标准答案</li>
-                <li>召回率 — 相关信息是否被检索到</li>
-                <li>完整性 — 回答是否覆盖所有要点</li>
-                <li>幻觉率 — 回答中编造不存在信息的比例</li>
-                <li>检索耗时 — 从查询到返回结果的响应时间</li>
-                <li>综合分数 — 加权评分（准确40%+召回20%+完整20%+幻觉-20%）</li>
-            </ul>
-            <div class="tech-tags">
-                <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span>
-            </div>
-        </div>
-
-        <!-- Pure Python RAG -->
-        <div class="project-card">
-            <h3>纯Python RAG系统 — 比框架快65%</h3>
-            <p><strong>业务问题：</strong>LangChain框架太重，响应慢，依赖多，部署复杂。</p>
-            <p><strong>我做了什么：</strong>从零实现完整RAG链路，不依赖任何框架，代码仅954行。</p>
-            <p><strong>效果：</strong>比LangChain快65.7%，通过率提升10%，部署更简单。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">65.7%</div><div class="label">速度提升</div></div>
-                <div class="stat"><div class="num">954</div><div class="label">代码行数</div></div>
-                <div class="stat"><div class="num">10%</div><div class="label">通过率提升</div></div>
-            </div>
-            <div class="tech-tags">
-                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>零框架依赖</span>
-            </div>
-        </div>
-
-        <!-- RPA -->
-        <div class="project-card">
-            <h3>运营商套餐数据自动采集 — 100%自动化</h3>
-            <p><strong>业务问题：</strong>运营商套餐数据需要手动更新，耗时耗力，容易出错。</p>
-            <p><strong>我做了什么：</strong>用Playwright实现自动化抓取，直接导入RAG知识库。</p>
-            <p><strong>效果：</strong>采集10+套餐，100%自动化率，知识库自动更新。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">10+</div><div class="label">采集套餐数</div></div>
-                <div class="stat"><div class="num">100%</div><div class="label">自动化率</div></div>
-            </div>
-            <div class="tech-tags">
-                <span>Playwright</span><span>Python</span><span>RPA</span><span>数据采集</span>
-            </div>
-        </div>
-
-        <!-- Web Integration -->
-        <div class="project-card">
-            <h3>RAG系统Web端集成 — 公网远程访问</h3>
-            <p><strong>业务问题：</strong>RAG系统只能本地使用，无法远程访问，多人无法同时使用。</p>
-            <p><strong>我做了什么：</strong>将RAG系统集成到Web界面，通过公网IP实现远程访问。</p>
-            <p><strong>效果：</strong>用户可通过浏览器直接与知识库对话，无需本地部署。</p>
-            <div class="stats">
-                <div class="stat"><div class="num">公网IP</div><div class="label">远程访问</div></div>
-                <div class="stat"><div class="num">Web UI</div><div class="label">可视化界面</div></div>
-            </div>
-            <div class="tech-tags">
-                <span>FastAPI</span><span>公网部署</span><span>Web UI</span>
-            </div>
-        </div>
-
+  <!-- Layout A: Split - 退费申请生成器 -->
+  <div class="project project-split reveal">
+    <div class="project-image">
+      <img src="images/退费工具.jpg" alt="退费申请生成器界面" loading="lazy">
     </div>
-</section>
+    <div class="project-body">
+      <h3>退费申请生成器</h3>
+      <p>一键生成符合规范的退费申请文档，自动填充客户信息、套餐详情、退费金额，将原本15分钟的手工填写缩短到3秒。</p>
+      <div class="tags">
+        <span>Python</span><span>Flask</span><span>API集成</span><span>文档生成</span>
+      </div>
+      <div class="btn-group">
+        <a href="http://8.163.101.180:5000" target="_blank" class="btn btn-primary">在线体验 →</a>
+      </div>
+    </div>
+  </div>
 
-<div class="divider"></div>
+  <!-- Layout B: Full-width stats - 零成本AI Agent -->
+  <div class="project project-full reveal">
+    <h3>零成本AI Agent搭建指南</h3>
+    <p class="desc">从零开始搭建免费运行的AI Agent，不需要GPU、不需要付费API额度，纯本地部署方案。</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">成本</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">本地部署</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">∞</div>
+        <div class="stat-label">可扩展</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>Agent</span><span>本地部署</span><span>零成本</span>
+    </div>
+    <div class="btn-group">
+      <a href="https://github.com/Guanyu-AI-prog/ai-agent-deploy-guide" target="_blank" class="btn btn-ghost">GitHub →</a>
+    </div>
+  </div>
+
+  <!-- Layout A: Split - 差评话术生成器 -->
+  <div class="project project-split reveal">
+    <div class="project-image">
+      <img src="images/差评话术生成器.jpg" alt="差评话术生成器界面" loading="lazy">
+    </div>
+    <div class="project-body">
+      <h3>差评话术生成器</h3>
+      <p>输入客户差评内容，自动生成专业、有温度的回复话术。支持多种场景：套餐争议、服务投诉、网络问题等。</p>
+      <div class="tags">
+        <span>Python</span><span>LLM</span><span>NLP</span><span>Web UI</span>
+      </div>
+      <div class="btn-group">
+        <a href="http://8.163.101.180:5002" target="_blank" class="btn btn-primary">在线体验 →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout B: Full-width stats - AI工作流 -->
+  <div class="project project-full reveal">
+    <h3>AI工作流</h3>
+    <p class="desc">将日常重复性工作流程化、自动化，用AI串联多个环节，减少人工干预。</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">流程节点</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">80%</div>
+        <div class="stat-label">效率提升</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>Workflow</span><span>自动化</span><span>AI编排</span>
+    </div>
+  </div>
+
+  <!-- Layout C: Highlight - RAG智能客服 (MOST IMPACTFUL) -->
+  <div class="project project-highlight reveal">
+    <h3>电信套餐智能问答系统</h3>
+    <p class="desc">基于RAG架构的智能客服系统，融合BM25关键词检索与向量语义检索，问答准确率从74%提升至98.7%。支持电信套餐咨询、业务办理指引、资费查询等场景。</p>
+
+    <!-- SVG Architecture Diagram -->
+    <div class="arch-diagram">
+      <svg width="900" height="140" viewBox="0 0 900 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto">
+        <!-- Boxes -->
+        <rect x="0" y="35" width="100" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <text x="50" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">文档处理</text>
+
+        <rect x="140" y="35" width="100" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <text x="190" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">文本分块</text>
+
+        <rect x="280" y="35" width="100" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <text x="330" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">向量嵌入</text>
+
+        <rect x="420" y="35" width="110" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <text x="475" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">ChromaDB</text>
+
+        <rect x="570" y="35" width="130" height="50" rx="6" fill="rgba(34,227,255,0.06)" stroke="rgba(34,227,255,0.2)" stroke-width="1"/>
+        <text x="635" y="60" text-anchor="middle" fill="#22e3ff" font-family="JetBrains Mono,monospace" font-size="10">BM25+向量</text>
+        <text x="635" y="75" text-anchor="middle" fill="#22e3ff" font-family="JetBrains Mono,monospace" font-size="10">混合检索</text>
+
+        <rect x="740" y="35" width="70" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+        <text x="775" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">重排序</text>
+
+        <!-- Arrows -->
+        <line x1="100" y1="60" x2="140" y2="60" stroke="#22e3ff" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="138,57 144,60 138,63" fill="#22e3ff" opacity="0.6"/>
+
+        <line x1="240" y1="60" x2="280" y2="60" stroke="#22e3ff" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="278,57 284,60 278,63" fill="#22e3ff" opacity="0.6"/>
+
+        <line x1="380" y1="60" x2="420" y2="60" stroke="#22e3ff" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="418,57 424,60 418,63" fill="#22e3ff" opacity="0.6"/>
+
+        <line x1="530" y1="60" x2="570" y2="60" stroke="#22e3ff" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="568,57 574,60 568,63" fill="#22e3ff" opacity="0.6"/>
+
+        <line x1="700" y1="60" x2="740" y2="60" stroke="#22e3ff" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="738,57 744,60 738,63" fill="#22e3ff" opacity="0.6"/>
+
+        <!-- Final arrow to output -->
+        <line x1="810" y1="60" x2="855" y2="60" stroke="#22e3ff" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="853,57 859,60 853,63" fill="#22e3ff" opacity="0.6"/>
+
+        <!-- Output -->
+        <rect x="855" y="42" width="40" height="36" rx="4" fill="rgba(34,227,255,0.12)" stroke="rgba(34,227,255,0.3)" stroke-width="1"/>
+        <text x="875" y="64" text-anchor="middle" fill="#22e3ff" font-family="JetBrains Mono,monospace" font-size="10">输出</text>
+
+        <!-- Labels underneath key boxes -->
+        <text x="190" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">分类型切分(250/300/500)</text>
+        <text x="330" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">bge-large-zh-v1.5</text>
+        <text x="475" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">向量数据库</text>
+        <text x="635" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">双路召回+融合</text>
+        <text x="775" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">bge-reranker-v2-m3</text>
+        <text x="875" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">step-3.5-flash</text>
+      </svg>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">98.7%</div>
+        <div class="stat-label">问答准确率</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">74%→98.7%</div>
+        <div class="stat-label">准确率提升</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">2</div>
+        <div class="stat-label">检索通道</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">重排序模型</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>RAG</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>Flask</span>
+    </div>
+    <div class="btn-group">
+      <a href="http://8.163.101.180:8001/static/web_ui.html" target="_blank" class="btn btn-primary">在线演示 →</a>
+      <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" target="_blank" class="btn btn-ghost">GitHub →</a>
+    </div>
+  </div>
+
+  <!-- Layout B: Full-width stats - RAG评测 -->
+  <div class="project project-full reveal">
+    <h3>RAG检索质量评测体系</h3>
+    <p class="desc">设计30道测试题，覆盖6种题型，横向对比Dify/纯Python/LangChain三种方案，量化6项指标驱动优化。</p>
+    <p class="desc" style="margin-top:8px;font-size:13px">评测维度：准确率 · 召回率 · 完整性 · 幻觉率 · 检索耗时 · 综合分数</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">6</div>
+        <div class="stat-label">评测维度</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">30</div>
+        <div class="stat-label">测试用例</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">方案对比</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span>
+    </div>
+  </div>
+
+  <!-- Layout B: Full-width stats - 纯Python RAG -->
+  <div class="project project-full reveal">
+    <h3>纯Python RAG系统</h3>
+    <p class="desc">不依赖LangChain框架，纯Python手写RAG全流程，深入理解每个环节的原理。</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">框架依赖</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">可控性</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>零框架依赖</span>
+    </div>
+  </div>
+
+  <!-- Layout B: Full-width stats - 数据采集 -->
+  <div class="project project-full reveal">
+    <h3>运营商套餐数据自动采集</h3>
+    <p class="desc">自动抓取和整理运营商套餐信息，为RAG知识库提供结构化数据源。</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">套餐数据</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">自动</div>
+        <div class="stat-label">更新频率</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>爬虫</span><span>数据清洗</span><span>结构化</span>
+    </div>
+  </div>
+
+  <!-- Layout B: Full-width stats - Web端集成 -->
+  <div class="project project-full reveal">
+    <h3>RAG系统Web端集成</h3>
+    <p class="desc">将RAG系统封装为Web服务，支持对话式交互，前端界面简洁易用。</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num">Web</div>
+        <div class="stat-label">部署方式</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3s</div>
+        <div class="stat-label">平均响应</div>
+      </div>
+    </div>
+    <div class="tags">
+      <span>Flask</span><span>HTML/CSS/JS</span><span>WebSocket</span>
+    </div>
+  </div>
+</section>
 
 <!-- Insights -->
 <section id="insights">
-    <div class="container">
-        <div class="section-header">
-            <h2>技术洞察</h2>
-            <p>从实践中提炼的关键认知——不是"会用工具"，而是"理解边界"</p>
-        </div>
-
-        <div class="insight-card">
-            <h4>BM25 混合检索为什么能从 74% 拉到 98.7%？</h4>
-            <p>向量检索擅长语义匹配，但遇到精确关键词时反而模糊。BM25 的精确匹配恰好弥补短板。<strong>混合检索不是"加保险"，而是解决不同粒度的召回问题。</strong></p>
-        </div>
-        <div class="insight-card">
-            <h4>小数据不该用 RAG</h4>
-            <p>数据量小（几万字以内），直接塞进 LLM 上下文窗口效果反而更好。RAG 的切块-检索-拼接会丢失上下文关联。<strong>RAG 是大数据场景的工具，小数据直接喂全文才是最优解。</strong></p>
-        </div>
-        <div class="insight-card">
-            <h4>评测题可能存在"过拟合"</h4>
-            <p>60 道测试题 97.7% 零幻觉——但测试题基于知识库内容设计，等于"开卷考试"。<strong>评测的目的是暴露问题，不是证明自己厉害。</strong></p>
-        </div>
-        <div class="insight-card">
-            <h4>三框架对比的真实发现</h4>
-            <p>Dify Agent 质量最高（97.3%）但响应慢（9s），LangChain RAG 最快（2.86s）但质量略低，LangChain Agent 兼顾。<strong>没有"最好的框架"，只有"最适合场景的框架"。</strong></p>
-        </div>
-        <div class="insight-card">
-            <h4>纯 RAG 有天花板，突破靠"加一层"</h4>
-            <p>参数调到极限时，突破来自架构层面的改变——在 Chatflow 多加一个检索节点，召回率直接跳到八九十。</p>
-        </div>
-        <div class="insight-card">
-            <h4>检索 > 生成</h4>
-            <p>RAG 的核心不是模型，而是检索。<strong>检索不到 → 一定幻觉。</strong>Prompt 无法弥补检索缺陷。80% 的优化精力应该花在检索侧。</p>
-        </div>
-        <div class="insight-card">
-            <h4>数据质量决定上限</h4>
-            <p>结构化 > 非结构化，一致性 > 数量。文档编码、格式统一、Q&A 增强——这些"脏活"才是决定 RAG 质量的关键。</p>
-        </div>
-        <div class="insight-card">
-            <h4>工程 > 算法</h4>
-            <p>部署、存储、性能、环境配置、编码转换——这些工程问题占据了 60% 的时间。解决它们的能力才是落地 RAG 的关键。</p>
-        </div>
-        <div class="insight-card">
-            <h4>切分策略因场景而异</h4>
-            <p>Q&A 用小块（250字）、详情用大块（500字）、文学用父子层级、学术用双粒度。<strong>没有万能切分，只有最适合的切分。</strong></p>
-        </div>
-        <div class="insight-card">
-            <h4>平衡而非最优化</h4>
-            <p>召回率 vs 准确率 vs 幻觉率是三角制衡。TopK=3~5、Score 阈值 0.6~0.7、严格 Prompt + 拒答机制。<strong>宁可不答，不可答错。</strong></p>
-        </div>
+  <h2 class="section-title reveal">实战洞察</h2>
+  <p class="section-desc reveal">踩过的坑和总结出的经验。</p>
+  <div class="bento">
+    <div class="bento-card span-2 reveal">
+      <h4>BM25 混合检索为什么能从 74% 拉到 98.7%？</h4>
+      <p class="quote">纯向量检索丢了关键词精确匹配，<strong>BM25 补上了这块短板</strong>，双路召回后准确率直接起飞。</p>
     </div>
+    <div class="bento-card span-2 reveal">
+      <h4>纯 RAG 有天花板，突破靠"加一层"</h4>
+      <p class="quote">检索之后加一层<strong>Cross-Encoder 重排序</strong>，从 Top-20 里精选 Top-5，效果提升显著。</p>
+    </div>
+    <div class="bento-card reveal">
+      <h4>ChromaDB 比你想象的好用</h4>
+      <p class="quote"><strong>零配置启动</strong>，向量存储+检索一条龙，小规模场景完全够用。</p>
+    </div>
+    <div class="bento-card reveal">
+      <h4>文档分块决定一切</h4>
+      <p class="quote">分块太大丢精度，太小丢语义。<strong>固定长度+重叠</strong>是最稳的方案。</p>
+    </div>
+    <div class="bento-card reveal">
+      <h4>DeepSeek 是性价比之王</h4>
+      <p class="quote">效果接近GPT-4，价格便宜一个数量级，<strong>落地首选</strong>。</p>
+    </div>
+    <div class="bento-card reveal">
+      <h4>先跑起来再优化</h4>
+      <p class="quote">不要等完美方案，<strong>70分就上线</strong>，真实反馈比理论分析有用。</p>
+    </div>
+    <div class="bento-card reveal">
+      <h4>非科班的优势</h4>
+      <p class="quote">没有框架思维限制，<strong>什么好用用什么</strong>，反而跑得更快。</p>
+    </div>
+    <div class="bento-card reveal">
+      <h4>业务经验是最好的产品经理</h4>
+      <p class="quote">在营业厅干过，<strong>知道痛点在哪</strong>，比写代码更重要的是知道该写什么。</p>
+    </div>
+  </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- Skills -->
 <section id="skills">
-    <div class="container">
-        <div class="section-header">
-            <h2>技术能力</h2>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <h4>Agent 协同开发</h4>
-                <p class="desc">Hermes · Claude Code · OpenCode · 多Agent编排</p>
-                <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
-            </div>
-            <div class="skill-item">
-                <h4>RAG 系统架构</h4>
-                <p class="desc">LangChain · ChromaDB · 混合检索 · Rerank</p>
-                <div class="skill-bar"><div class="skill-bar-fill" style="width: 90%"></div></div>
-            </div>
-            <div class="skill-item">
-                <h4>Python 开发</h4>
-                <p class="desc">FastAPI · 数据处理 · 自动化脚本</p>
-                <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%"></div></div>
-            </div>
-            <div class="skill-item">
-                <h4>AI 评测与优化</h4>
-                <p class="desc">多维度评测 · 数据驱动 · 持续迭代</p>
-                <div class="skill-bar"><div class="skill-bar-fill" style="width: 85%"></div></div>
-            </div>
-            <div class="skill-item">
-                <h4>RPA 自动化</h4>
-                <p class="desc">Playwright · 浏览器自动化 · 数据采集</p>
-                <div class="skill-bar"><div class="skill-bar-fill" style="width: 80%"></div></div>
-            </div>
-            <div class="skill-item">
-                <h4>Linux 服务器运维</h4>
-                <p class="desc">Ubuntu 云服务器 · 公网部署 · 环境配置</p>
-                <div class="skill-bar"><div class="skill-bar-fill" style="width: 70%"></div></div>
-            </div>
-        </div>
+  <h2 class="section-title reveal">技能</h2>
+  <p class="section-desc reveal">4个月自学积累的技术栈。</p>
+  <div class="skills-grid">
+    <div class="skill-item reveal">
+      <div class="skill-name">Python</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:85%"></div></div>
     </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">LangChain</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">Flask</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">RAG</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+    </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">API集成</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+    </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">ChromaDB</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+    </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">NLP</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+    </div>
+    <div class="skill-item reveal">
+      <div class="skill-name">Web开发</div>
+      <div class="skill-bar"><div class="skill-bar-fill" style="width:60%"></div></div>
+    </div>
+  </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- Tech Stack -->
-<section>
-    <div class="container">
-        <div class="section-header">
-            <h2>技术栈</h2>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <h4>框架 & 平台</h4>
-                <p class="desc">Dify · LangChain · LangGraph · AnythingLLM</p>
-            </div>
-            <div class="skill-item">
-                <h4>向量数据库</h4>
-                <p class="desc">ChromaDB · Dify 内置向量库</p>
-            </div>
-            <div class="skill-item">
-                <h4>嵌入 & 重排序</h4>
-                <p class="desc">BGE-M3 · BGE-Large-ZH · BGE-Reranker-v2-M3</p>
-            </div>
-            <div class="skill-item">
-                <h4>大语言模型</h4>
-                <p class="desc">DeepSeek · MiMo · SiliconFlow API</p>
-            </div>
-            <div class="skill-item">
-                <h4>推理引擎</h4>
-                <p class="desc">Ollama · vLLM · API 调用</p>
-            </div>
-            <div class="skill-item">
-                <h4>部署环境</h4>
-                <p class="desc">Ubuntu · Docker · 公网IP · FastAPI</p>
-            </div>
-        </div>
-    </div>
+<section id="tech">
+  <h2 class="section-title reveal">技术栈</h2>
+  <div class="tech-list reveal">
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">LangChain</span>
+    <span class="tech-tag">Flask</span>
+    <span class="tech-tag">ChromaDB</span>
+    <span class="tech-tag">DeepSeek API</span>
+    <span class="tech-tag">BM25</span>
+    <span class="tech-tag">RAG</span>
+    <span class="tech-tag">Cross-Encoder</span>
+    <span class="tech-tag">HTML/CSS/JS</span>
+    <span class="tech-tag">Git</span>
+    <span class="tech-tag">Linux</span>
+  </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- Contact -->
-<section class="contact-section">
-    <div class="container">
-        <h2>联系方式</h2>
-        <p class="sub">期待与您交流 AI 应用落地的更多可能</p>
-        <a href="https://github.com/Guanyu-AI-prog" class="btn btn-primary" target="_blank">GitHub</a>
-        <div class="contact-info">
-            <p>zy_zy2@126.com · 17727681285</p>
-            <p style="margin-top: 8px; font-size: 13px;">CAIE认证人工智能工程师</p>
-        </div>
-    </div>
+<section id="contact" class="contact">
+  <h2 class="section-title reveal">联系</h2>
+  <p class="reveal">如果你也想用AI解决实际业务问题，或者对我的项目感兴趣，欢迎交流。</p>
+  <a href="https://github.com/Guanyu-AI-prog" target="_blank" class="reveal">GitHub →</a>
 </section>
 
 <!-- Footer -->
 <footer>
-    <div class="container">
-        <p>© 2026 郑裕坚 · AI落地实践者</p>
-    </div>
+  <p>郑裕坚 · 2026</p>
 </footer>
 
 <script>
-// Smooth scroll for nav links
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        e.preventDefault();
-        document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-    });
-});
-</script>
+// === Canvas 2D Particle Engine ===
+(function(){
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  let W, H, particles = [], dpr = window.devicePixelRatio || 1;
+
+  function resize(){
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function initParticles(){
+    particles = [];
+    const count = Math.min(120, Math.floor((W * H) / 12000));
+    for(let i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        r: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        a: Math.random() * 0.4 + 0.1
+      });
+    }
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, W, H);
+    for(const p of particles){
+      p.x += p.vx;
+      p.y += p.vy;
+      if(p.x < 0) p.x = W;
+      if(p.x > W) p.x = 0;
+      if(p.y < 0) p.y = H;
+      if(p.y > H) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(34,227,255,' + p.a + ')';
+      ctx.fill();
+    }
+    raf = requestAnimationFrame(draw);
+  }
+
+  let raf;
+  if(prefersReduced){
+    // Static: just draw a few dim dots once
+    resize();
+    initParticles();
+    ctx.clearRect(0, 0, W, H);
+    for(const p of particles){
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(34,227,255,' + (p.a * 0.5) + ')';
+      ctx.fill();
+    }
+  } else {
+    resize();
+    initParticles();
+    draw();
+    window.addEventListener('resize', function(){
+      resize();
+      initParticles();
+    });
+  }
+
+  // === Scroll Reveal (IntersectionObserver) ===
+  const reveals = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    const obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.1, rootMargin: '0px 0px -40px 0px'});
+    reveals.forEach(function(el){ obs.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // === Skill bar animation on reveal ===
+  const skillBars = document.querySelectorAll('.skill-bar-fill');
+  if('IntersectionObserver' in window){
+    const sobs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.style.width = e.target.style.width; // trigger repaint
+          sobs.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.5});
+    skillBars.forEach(function(el){
+      const w = el.style.width;
+      el.style.width = '0';
+      el.dataset.target = w;
+      sobs.observe(el);
+    });
+    // Re-trigger on visible
+    const vobs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.style.width = e.target.dataset.target;
+          vobs.unobserve(e.target);
+        }
+      });
+    }, {threshold: 0.5});
+    skillBars.forEach(function(el){ vobs.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>
