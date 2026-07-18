@@ -475,7 +475,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
     </div>
     <div class="bento-card span-2 reveal">
       <h4>纯 RAG 有天花板，突破靠"加一层"</h4>
-      <p class="quote">检索之后加一层<strong>Cross-Encoder 重排序</strong>，从 Top-20 里精选 Top-5，效果提升显著。</p>
+      <p class="quote">检索之后加一层<strong>bge-reranker-v2-m3 重排序</strong>，从 Top-20 里精选 Top-5，效果提升显著。</p>
     </div>
     <div class="bento-card reveal">
       <h4>ChromaDB 比你想象的好用</h4>
@@ -483,7 +483,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
     </div>
     <div class="bento-card reveal">
       <h4>文档分块决定一切</h4>
-      <p class="quote">分块太大丢精度，太小丢语义。<strong>固定长度+重叠</strong>是最稳的方案。</p>
+      <p class="quote">分块太大丢精度，太小丢语义。<strong>分类型三档切分（250/300/500字）</strong>比固定长度更贴合实际文档结构。</p>
     </div>
     <div class="bento-card reveal">
       <h4>DeepSeek 是性价比之王</h4>
@@ -555,7 +555,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
     <span class="tech-tag">DeepSeek API</span>
     <span class="tech-tag">BM25</span>
     <span class="tech-tag">RAG</span>
-    <span class="tech-tag">Cross-Encoder</span>
+    <span class="tech-tag">bge-reranker-v2-m3</span>
     <span class="tech-tag">HTML/CSS/JS</span>
     <span class="tech-tag">Git</span>
     <span class="tech-tag">Linux</span>
@@ -566,6 +566,8 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
 <section id="contact" class="contact">
   <h2 class="section-title reveal">联系</h2>
   <p class="reveal">如果你也想用AI解决实际业务问题，或者对我的项目感兴趣，欢迎交流。</p>
+  <a href="mailto:zy_zy2@126.com" class="reveal">zy_zy2@126.com</a>
+  <a href="tel:17727681285" class="reveal">177-2768-1285</a>
   <a href="https://github.com/Guanyu-AI-prog" target="_blank" class="reveal">GitHub →</a>
 </section>
 
