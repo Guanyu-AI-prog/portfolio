@@ -218,7 +218,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
   <!-- Layout C: Highlight - RAG智能客服 (MOST IMPACTFUL) -->
   <div class="project project-highlight reveal">
     <h3>电信套餐智能问答系统</h3>
-    <p class="desc">基于RAG架构的智能客服系统，融合BM25关键词检索与向量语义检索，问答准确率从74%提升至98.7%。支持电信套餐咨询、业务办理指引、资费查询等场景。</p>
+    <p class="desc">从数据采集到问答交付的端到端RAG系统。自动采集100+运营商套餐数据，纯Python实现全流程（零框架依赖），融合BM25+向量双路检索，问答准确率从74%提升至98.7%。</p>
 
     <!-- SVG Architecture Diagram -->
     <div class="arch-diagram">
@@ -296,7 +296,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
       </div>
     </div>
     <div class="tags">
-      <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>RAG</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>Flask</span>
+      <span>纯Python</span><span>零框架依赖</span><span>ChromaDB</span><span>BM25</span><span>RAG</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>Flask</span><span>数据采集</span>
     </div>
     <div class="btn-group">
       <a href="http://8.163.101.180:8001/static/web_ui.html" target="_blank" class="btn btn-primary">在线演示 →</a>
@@ -363,106 +363,6 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
     </div>
   </div>
 
-  <!-- Layout B: Full-width stats - AI工作流 -->
-  <div class="project project-full reveal">
-    <h3>AI工作流</h3>
-    <p class="desc">将日常重复性工作流程化、自动化，用AI串联多个环节，减少人工干预。</p>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">12+</div>
-        <div class="stat-label">流程节点</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">80%</div>
-        <div class="stat-label">效率提升</div>
-      </div>
-    </div>
-    <div class="tags">
-      <span>Workflow</span><span>自动化</span><span>AI编排</span>
-    </div>
-  </div>
-
-
-  <!-- Layout B: Full-width stats - RAG评测 -->
-  <div class="project project-full reveal">
-    <h3>RAG检索质量评测体系</h3>
-    <p class="desc">设计30道测试题，覆盖6种题型，横向对比Dify/纯Python/LangChain三种方案，量化6项指标驱动优化。</p>
-    <p class="desc" style="margin-top:8px;font-size:13px">评测维度：准确率 · 召回率 · 完整性 · 幻觉率 · 检索耗时 · 综合分数</p>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">6</div>
-        <div class="stat-label">评测维度</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">30</div>
-        <div class="stat-label">测试用例</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3</div>
-        <div class="stat-label">方案对比</div>
-      </div>
-    </div>
-    <div class="tags">
-      <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span>
-    </div>
-  </div>
-
-  <!-- Layout B: Full-width stats - 纯Python RAG -->
-  <div class="project project-full reveal">
-    <h3>纯Python RAG系统</h3>
-    <p class="desc">不依赖LangChain框架，纯Python手写RAG全流程，深入理解每个环节的原理。</p>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">0</div>
-        <div class="stat-label">框架依赖</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">可控性</div>
-      </div>
-    </div>
-    <div class="tags">
-      <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>零框架依赖</span>
-    </div>
-  </div>
-
-  <!-- Layout B: Full-width stats - 数据采集 -->
-  <div class="project project-full reveal">
-    <h3>运营商套餐数据自动采集</h3>
-    <p class="desc">自动抓取和整理运营商套餐信息，为RAG知识库提供结构化数据源。</p>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">100+</div>
-        <div class="stat-label">套餐数据</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">自动</div>
-        <div class="stat-label">更新频率</div>
-      </div>
-    </div>
-    <div class="tags">
-      <span>爬虫</span><span>数据清洗</span><span>结构化</span>
-    </div>
-  </div>
-
-  <!-- Layout B: Full-width stats - Web端集成 -->
-  <div class="project project-full reveal">
-    <h3>RAG系统Web端集成</h3>
-    <p class="desc">将RAG系统封装为Web服务，支持对话式交互，前端界面简洁易用。</p>
-    <div class="stats-row">
-      <div class="stat-item">
-        <div class="stat-num">Web</div>
-        <div class="stat-label">部署方式</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3s</div>
-        <div class="stat-label">平均响应</div>
-      </div>
-    </div>
-    <div class="tags">
-      <span>Flask</span><span>HTML/CSS/JS</span><span>WebSocket</span>
-    </div>
-  </div>
 </section>
 
 <!-- Insights -->
