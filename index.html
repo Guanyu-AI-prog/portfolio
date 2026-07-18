@@ -438,7 +438,7 @@
                 <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="btn btn-ghost" target="_blank">GitHub</a>
             </div>
             <div class="tech-tags">
-                <span>Python</span><span>LangChain</span><span>ChromaDB</span><span>DeepSeek</span>
+                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span>
             </div>
         </div>
 
@@ -449,10 +449,19 @@
             <p><strong>我做了什么：</strong>设计30道测试题，覆盖6种题型，横向对比3种方案。</p>
             <p><strong>效果：</strong>找到最适合的方案，质量最高97.3%，响应最快2.86秒。</p>
             <div class="stats">
+                <div class="stat"><div class="num">6</div><div class="label">评测维度</div></div>
                 <div class="stat"><div class="num">30</div><div class="label">测试用例</div></div>
-                <div class="stat"><div class="num">6</div><div class="label">题型覆盖</div></div>
-                <div class="stat"><div class="num">97.3%</div><div class="label">最高质量</div></div>
+                <div class="stat"><div class="num">3</div><div class="label">方案对比</div></div>
             </div>
+            <p><strong>评测维度：</strong></p>
+            <ul>
+                <li>准确率 — 回答是否正确匹配标准答案</li>
+                <li>召回率 — 相关信息是否被检索到</li>
+                <li>完整性 — 回答是否覆盖所有要点</li>
+                <li>幻觉率 — 回答中编造不存在信息的比例</li>
+                <li>检索耗时 — 从查询到返回结果的响应时间</li>
+                <li>综合分数 — 加权评分（准确40%+召回20%+完整20%+幻觉-20%）</li>
+            </ul>
             <div class="tech-tags">
                 <span>评测体系</span><span>自动化测试</span><span>数据驱动优化</span>
             </div>
@@ -470,7 +479,7 @@
                 <div class="stat"><div class="num">10%</div><div class="label">通过率提升</div></div>
             </div>
             <div class="tech-tags">
-                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>Rerank</span><span>零框架依赖</span>
+                <span>纯Python</span><span>ChromaDB</span><span>BM25</span><span>bge-large-zh-v1.5</span><span>bge-reranker-v2-m3</span><span>零框架依赖</span>
             </div>
         </div>
 
