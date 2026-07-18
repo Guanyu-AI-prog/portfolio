@@ -433,6 +433,19 @@
                 <img src="images/RAG智能客服.jpg" alt="RAG智能客服界面" loading="lazy">
                 <div class="screenshot-label">运营商套餐Agent - 智能客服界面</div>
             </div>
+            <p><strong>系统架构：</strong></p>
+            <pre style="background:#0d1117;color:#c9d1d9;padding:12px;border-radius:8px;font-size:12px;line-height:1.6;overflow-x:auto;margin:8px 0">用户提问 → 查询改写 → 意图分类(推荐/对比/事实) → 查询扩展
+                                ↓
+              ┌───────────────┬───────────────┐
+              │  向量检索       │  BM25检索      │  ← 并行双路
+              │ bge-large-zh   │ jieba分词      │
+              │ Top-8          │ BM25 Okapi Top-3│
+              └───────────────┴───────────────┘
+                              ↓ 合并去重
+                   bge-reranker-v2-m3 重排序
+                              ↓
+                      LLM 生成回答</pre>
+            <p><strong>分类型切分：</strong>Q&A用小块(250字)、套餐详情用大块(500字)、默认300字</p>
             <div style="margin-bottom: 16px;">
                 <a href="http://8.163.101.180:8001/static/web_ui.html" class="btn btn-primary" target="_blank">在线演示</a>
                 <a href="https://github.com/Guanyu-AI-pro/telecom-agent-bench" class="btn btn-ghost" target="_blank">GitHub</a>
