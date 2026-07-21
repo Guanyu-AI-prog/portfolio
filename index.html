@@ -16,14 +16,14 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --bg:#08090f;--surface:rgba(15,16,24,0.6);--ink:#e8edf5;--muted:#a0a4b8;--dim:#6b6f82;
-  --accent:#8b5cf6;--accent2:#6366f1;--accent-dim:rgba(139,92,246,0.15);--border:rgba(139,92,246,0.12);
-  --glass-bg:rgba(15,16,24,0.55);--glass-border:rgba(139,92,246,0.18);
+  --accent:#3b82f6;--accent2:#2563eb;--accent-dim:rgba(59,130,246,0.15);--border:rgba(59,130,246,0.12);
+  --glass-bg:rgba(15,16,24,0.55);--glass-border:rgba(59,130,246,0.18);
   --font-body:'Inter',system-ui,sans-serif;--font-mono:'JetBrains Mono',monospace;
 }
 html{scroll-behavior:smooth;background:var(--bg);color:var(--ink);font-family:var(--font-body)}
 body{background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;position:relative}
-body::before{content:'';position:fixed;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(99,102,241,0.12) 0%,transparent 70%);pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;bottom:-20%;right:-10%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(139,92,246,0.10) 0%,transparent 70%);pointer-events:none;z-index:0}
+body::before{content:'';position:fixed;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(59,130,246,0.12) 0%,transparent 70%);pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;bottom:-20%;right:-10%;width:55%;height:55%;background:radial-gradient(ellipse,rgba(37,99,235,0.10) 0%,transparent 70%);pointer-events:none;z-index:0}
 nav,section,#hero,.contact{position:relative;z-index:1}
 ::selection{background:var(--accent-dim);color:var(--ink)}
 
@@ -53,7 +53,7 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto}
 .hero-content h1{font-size:clamp(40px,7vw,80px);font-weight:800;letter-spacing:-0.04em;line-height:0.92;margin-bottom:24px;color:var(--ink)}
 .hero-content .subtitle{font-size:clamp(14px,2vw,18px);font-weight:300;color:var(--muted);line-height:1.65;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto}
 .hero-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.hero-tags span{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;border:1px solid var(--glass-border);border-radius:6px;color:var(--muted);background:rgba(139,92,246,0.06);backdrop-filter:blur(8px)}
+.hero-tags span{font-family:var(--font-mono);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;padding:8px 16px;border:1px solid var(--glass-border);border-radius:6px;color:var(--muted);background:rgba(59,130,246,0.06);backdrop-filter:blur(8px)}
 .hero-tags span .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:middle}
 
 /* Reveal animation */
@@ -106,21 +106,21 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto}
 
 /* Tech tags */
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
-.tags span{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;padding:5px 12px;border:1px solid var(--glass-border);border-radius:4px;color:var(--dim);background:rgba(139,92,246,0.05)}
+.tags span{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;padding:5px 12px;border:1px solid var(--glass-border);border-radius:4px;color:var(--dim);background:rgba(59,130,246,0.05)}
 
 /* Buttons */
 .btn-group{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
 .btn{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;padding:10px 20px;border-radius:8px;text-decoration:none;transition:all 0.25s}
-.btn-primary{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:1px solid rgba(139,92,246,0.3);box-shadow:0 2px 12px rgba(99,102,241,0.3)}
-.btn-primary:hover{background:linear-gradient(135deg,var(--accent),#a78bfa);box-shadow:0 4px 20px rgba(139,92,246,0.4);transform:translateY(-1px)}
-.btn-ghost{background:rgba(139,92,246,0.08);color:var(--muted);border:1px solid var(--glass-border);backdrop-filter:blur(8px)}
-.btn-ghost:hover{color:var(--ink);border-color:rgba(139,92,246,0.35);background:rgba(139,92,246,0.14)}
+.btn-primary{background:linear-gradient(135deg,var(--accent2),var(--accent));color:#fff;border:1px solid rgba(59,130,246,0.3);box-shadow:0 2px 12px rgba(59,130,246,0.3)}
+.btn-primary:hover{background:linear-gradient(135deg,var(--accent),#60a5fa);box-shadow:0 4px 20px rgba(59,130,246,0.4);transform:translateY(-1px)}
+.btn-ghost{background:rgba(59,130,246,0.08);color:var(--muted);border:1px solid var(--glass-border);backdrop-filter:blur(8px)}
+.btn-ghost:hover{color:var(--ink);border-color:rgba(59,130,246,0.35);background:rgba(59,130,246,0.14)}
 
 /* Bento grid - Insights */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
 @media(max-width:768px){.bento{grid-template-columns:1fr}}
 .bento-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:14px;padding:28px;transition:border-color 0.2s,box-shadow 0.2s;backdrop-filter:blur(16px)}
-.bento-card:hover{border-color:rgba(139,92,246,0.3);box-shadow:0 0 24px rgba(139,92,246,0.08)}
+.bento-card:hover{border-color:rgba(59,130,246,0.3);box-shadow:0 0 24px rgba(59,130,246,0.08)}
 .bento-card.span-2{grid-column:span 2}
 @media(max-width:768px){.bento-card.span-2{grid-column:span 1}}
 .bento-card h4{font-size:16px;font-weight:800;letter-spacing:-0.01em;margin-bottom:10px;color:var(--ink)}
@@ -141,7 +141,7 @@ section{padding:100px 40px;max-width:1200px;margin:0 auto}
 /* Contact */
 .contact{padding:80px 40px;text-align:center;max-width:600px;margin:0 auto}
 .contact p{font-weight:300;font-size:15px;color:var(--muted);line-height:1.65;margin-bottom:24px}
-.contact a{color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(139,92,246,0.3);padding-bottom:2px;transition:border-color 0.2s}
+.contact a{color:var(--accent);text-decoration:none;font-family:var(--font-mono);font-size:13px;letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid rgba(59,130,246,0.3);padding-bottom:2px;transition:border-color 0.2s}
 .contact a:hover{border-color:var(--accent)}
 
 /* Footer */
@@ -240,36 +240,36 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
         <rect x="420" y="35" width="110" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
         <text x="475" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">ChromaDB</text>
 
-        <rect x="570" y="35" width="130" height="50" rx="6" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.25)" stroke-width="1"/>
-        <text x="635" y="60" text-anchor="middle" fill="#8b5cf6" font-family="JetBrains Mono,monospace" font-size="10">BM25+向量</text>
-        <text x="635" y="75" text-anchor="middle" fill="#8b5cf6" font-family="JetBrains Mono,monospace" font-size="10">混合检索</text>
+        <rect x="570" y="35" width="130" height="50" rx="6" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.25)" stroke-width="1"/>
+        <text x="635" y="60" text-anchor="middle" fill="#3b82f6" font-family="JetBrains Mono,monospace" font-size="10">BM25+向量</text>
+        <text x="635" y="75" text-anchor="middle" fill="#3b82f6" font-family="JetBrains Mono,monospace" font-size="10">混合检索</text>
 
         <rect x="740" y="35" width="70" height="50" rx="6" fill="#0f1018" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
         <text x="775" y="65" text-anchor="middle" fill="#7a7f8a" font-family="JetBrains Mono,monospace" font-size="11">重排序</text>
 
         <!-- Arrows -->
-        <line x1="100" y1="60" x2="140" y2="60" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
-        <polygon points="138,57 144,60 138,63" fill="#8b5cf6" opacity="0.6"/>
+        <line x1="100" y1="60" x2="140" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="138,57 144,60 138,63" fill="#3b82f6" opacity="0.6"/>
 
-        <line x1="240" y1="60" x2="280" y2="60" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
-        <polygon points="278,57 284,60 278,63" fill="#8b5cf6" opacity="0.6"/>
+        <line x1="240" y1="60" x2="280" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="278,57 284,60 278,63" fill="#3b82f6" opacity="0.6"/>
 
-        <line x1="380" y1="60" x2="420" y2="60" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
-        <polygon points="418,57 424,60 418,63" fill="#8b5cf6" opacity="0.6"/>
+        <line x1="380" y1="60" x2="420" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="418,57 424,60 418,63" fill="#3b82f6" opacity="0.6"/>
 
-        <line x1="530" y1="60" x2="570" y2="60" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
-        <polygon points="568,57 574,60 568,63" fill="#8b5cf6" opacity="0.6"/>
+        <line x1="530" y1="60" x2="570" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="568,57 574,60 568,63" fill="#3b82f6" opacity="0.6"/>
 
-        <line x1="700" y1="60" x2="740" y2="60" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
-        <polygon points="738,57 744,60 738,63" fill="#8b5cf6" opacity="0.6"/>
+        <line x1="700" y1="60" x2="740" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="738,57 744,60 738,63" fill="#3b82f6" opacity="0.6"/>
 
         <!-- Final arrow to output -->
-        <line x1="810" y1="60" x2="855" y2="60" stroke="#8b5cf6" stroke-width="1.5" opacity="0.6"/>
-        <polygon points="853,57 859,60 853,63" fill="#8b5cf6" opacity="0.6"/>
+        <line x1="810" y1="60" x2="855" y2="60" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+        <polygon points="853,57 859,60 853,63" fill="#3b82f6" opacity="0.6"/>
 
         <!-- Output -->
-        <rect x="855" y="42" width="40" height="36" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.35)" stroke-width="1"/>
-        <text x="875" y="64" text-anchor="middle" fill="#8b5cf6" font-family="JetBrains Mono,monospace" font-size="10">输出</text>
+        <rect x="855" y="42" width="40" height="36" rx="4" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.35)" stroke-width="1"/>
+        <text x="875" y="64" text-anchor="middle" fill="#3b82f6" font-family="JetBrains Mono,monospace" font-size="10">输出</text>
 
         <!-- Labels underneath key boxes -->
         <text x="190" y="105" text-anchor="middle" fill="#4a4e58" font-family="Inter,sans-serif" font-size="10">分类型切分(250/300/500)</text>
@@ -537,7 +537,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
       if(p.y > H) p.y = 0;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(139,92,246,' + p.a + ')';
+      ctx.fillStyle = 'rgba(59,130,246,' + p.a + ')';
       ctx.fill();
     }
     raf = requestAnimationFrame(draw);
@@ -552,7 +552,7 @@ footer p{font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;color
     for(const p of particles){
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(139,92,246,' + (p.a * 0.5) + ')';
+      ctx.fillStyle = 'rgba(59,130,246,' + (p.a * 0.5) + ')';
       ctx.fill();
     }
   } else {
