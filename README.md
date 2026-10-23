@@ -1,31 +1,94 @@
-# 个人作品集
+# 郑裕坚 · 个人作品集
 
-AI 应用工程师 · RAG / Agent / 全栈开发
+> **AI 应用解决方案实践者** —— 让 AI 在真实业务里跑起来，并且不出事。
+>
+> 把 RAG 与 Agent 落进真实业务：从需求判断、方案设计，到部署上线与持续验证。
 
-## 在线预览
+**在线预览**：https://guanyu-ai-prog.github.io/portfolio/
 
-🔗 **[portfolio-yujian-s-projects.vercel.app](https://portfolio-yujian-s-projects.vercel.app)**
+| | |
+|---|---|
+| 95% | RAG 问答准确率（30 题 × 2 轮开卷评测） |
+| 168 人 | 新学员三件套直写生产，实缴金额零漂移 |
+| 67 | 自动化测试全通过（18 模块重构后） |
+
+---
+
+## 项目
+
+每个项目都从真实的业务痛点出发，每个数字都可复现。
+
+### 01 · 教务系统 · 数据治理与账务一致性
+
+- **业务问题**：账务长期对不上，退费与转课的钱算不清
+- **我做了什么**：定位转课计价根因并修复 · 6 处账户重算收敛为单一模块 · 订单导入升级为受控业务流程
+- **结果**：上百名学员学费虚增纠正 · 187 行冗余代码删除 · 万行导入失败 0
+- **技术栈**：PostgreSQL · 幂等导入 · 事务内 dry-run · 三方对账
+
+### 02 · 电信套餐智能客服 · RAG 问答系统
+
+- **业务问题**：营业厅套餐咨询高度重复，人工应答效率低
+- **我做了什么**：纯 Python 全链路零框架依赖 · 语义 + BM25 + Q&A 三路召回加重排序 · 生成前加入可回答性判断
+- **结果**：问答准确率 95% · 幻觉率 5% · 平均响应 120 秒 → 8.3 秒
+- **技术栈**：FastAPI · ChromaDB · BM25 混合检索 · bge-reranker-v2-m3
+- **落地教训**：店员不爱用并非技术问题，而是 AI 话术有合规风险
+- **在线体验**：[RAG Demo](https://8.163.104.229/rag/web) · **源码**：[rag-agent-system](https://github.com/Guanyu-AI-prog/rag-agent-system)
+
+### 03 · 教务系统 AI 助手 · 知识库检索
+
+- **业务问题**：老师查 52 篇制度文档只能靠人工翻
+- **我做了什么**：自研关键词打分（实体词 ×25、表格降权）· auto / knowledge / data 三态分流 · 9 次迭代每次只修一类 Bad Case
+- **结果**：30 题测评命中 29/30 · 知识库 443 分块
+- **技术栈**：关键词打分检索 · 三态分流 · Text-to-SQL · 生产环境
+
+### 04 · 每日资讯流水线 · 无人值守内容自动化
+
+- **业务问题**：每日资讯与文案靠人工搜集整理，耗时且容易出错
+- **我做了什么**：每天 08:30 定时自动跑并带三次补跑 · 三关抓取核验后产出早报与文案 · 提示词层硬过滤修掉内部信息外泄
+- **结果**：无人值守启动 · 每日 6 条朋友圈文案 · 9 条工程踩坑固化
+- **技术栈**：定时任务 · 幂等与防重入 · 内容安全过滤 · 来源可溯源
+
+### 05 · 企业 AI 助手落地部署方案
+
+- **业务问题**：中小企业想用 AI Agent，被部署门槛和付费 API 挡住
+- **我做了什么**：梳理选模型 → 搭框架 → 对接微信 / 飞书 → 跑通场景的标准流程 · 沉淀 API 限流轮换与多模型切换等踩坑
+- **结果**：30 分钟从 0 到可用 · 80+ 操作截图 · 公司内推广落地
+- **技术栈**：Agent · RAG · 云端部署 · 企业 IM 集成 · SOP
+- **源码**：[ai-agent-deploy-guide](https://github.com/Guanyu-AI-prog/ai-agent-deploy-guide)
+
+---
+
+## 核心能力
+
+| 能力 | 证据 |
+|---|---|
+| RAG 与检索工程 | 准确率 65% → 85%，幻觉率 30% → 10%，响应 120 秒 → 8.3 秒 |
+| 业务数据治理 | 168 人直写实缴零漂移，万行导入失败 0，三方核对净差精确对平 |
+| AI 落地与部署 | 30 分钟跑通 Agent SOP，80+ 操作截图已开源，方案获批推广至全员 |
+| 流程与内容自动化 | 每日 08:30 无人值守流水线，9 条工程踩坑固化，渲染管线 5,400 帧 / 143 秒 |
+| 交付与验收 | 294 行 PRD → 18 个模块 → 67 个测试全通过，交付默认附带可验证证据 |
+
+## 实战洞察
+
+- **向量检索的天花板，要靠加一路破** —— 卡在 60–70% 停滞三周不是调参问题，加独立 Q&A 节点后召回 60% → 90%
+- **幻觉是症状，不是病因** —— 生成前先判断片段能否支撑问题，幻觉率 30% → 10%
+- **100% 准确率是我自己改掉的** —— 改成 95% + 开卷标注，一次改完 28 处、11 个文件
+- **六个 AI 说它成了，我坚持说还没成** —— 后来 30 / 60 / 120 题可复跑评测才是真结论
 
 ## 技术栈
 
-- **语言**: Python, JavaScript, TypeScript
-- **AI / LLM**: RAG 检索增强生成, LLM Agent 开发, Prompt Engineering
-- **框架**: FastAPI, Vue 3, Astro
-- **数据 / 向量库**: PostgreSQL, Vector DB
-- **部署**: Vercel, GitHub Pages, Docker
-
-## 精选项目
-
-### 🤖 Ailearner — AI 学习路径推荐 Agent
-帮助普通人判断"该不该学 AI、学什么方向、怎么零成本入门"的智能 Agent。
-
-### 🧠 RAG Agent System
-纯 Python 实现的 RAG + Agent 系统，包含混合检索（Vector + BM25 + Rerank）和生产环境实践。
-
-### 📚 RAG Systems Skill
-面向 Agent 的 RAG 系统技能库，涵盖检索、重排、评测方法论和 20+ 生产环境避坑指南。
+- **AI / LLM**：RAG 检索增强生成、Agent 工具调用、Prompt Engineering、可回答性判断、评测体系
+- **检索**：BM25 + 向量混合召回、bge-large-zh-v1.5 / bge-reranker-v2-m3、RRF 融合、父子分块
+- **后端**：Python、FastAPI、PostgreSQL、SQLAlchemy、Docker
+- **前端 / 构建**：Vue 3、Astro、Tailwind CSS、IBM Plex Mono
+- **运维**：Nginx、systemd、pg_dump 三重校验备份、Git 私有备份库、Agent 部署 SOP
 
 ## 联系我
 
-- GitHub: [@Guanyu-AI-prog](https://github.com/Guanyu-AI-prog)
-- 
+- GitHub：[@Guanyu-AI-prog](https://github.com/Guanyu-AI-prog)
+- 邮箱：zy_zy2@126.com
+- 电话：177-2768-1285
+
+---
+
+> 本作品集页面基于 [devportfolio](https://github.com/RyanFitzgerald/devportfolio) 模板，用 Astro 构建。
