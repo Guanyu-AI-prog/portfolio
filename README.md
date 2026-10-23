@@ -25,14 +25,14 @@
 - **结果**：上百名学员学费虚增纠正 · 187 行冗余代码删除 · 万行导入失败 0
 - **技术栈**：PostgreSQL · 幂等导入 · 事务内 dry-run · 三方对账
 
-### 02 · 电信套餐智能客服 · RAG 问答系统
+### 02 · 美妆电商客服 RAG · 规模化与工程化
 
-- **业务问题**：营业厅套餐咨询高度重复，人工应答效率低
-- **我做了什么**：纯 Python 全链路零框架依赖 · 语义 + BM25 + Q&A 三路召回加重排序 · 生成前加入可回答性判断
-- **结果**：问答准确率 95% · 幻觉率 5% · 平均响应 120 秒 → 8.3 秒
-- **技术栈**：FastAPI · ChromaDB · BM25 混合检索 · bge-reranker-v2-m3
-- **落地教训**：店员不爱用并非技术问题，而是 AI 话术有合规风险
-- **在线体验**：[RAG Demo](https://8.163.104.229/rag/web) · **源码**：[rag-agent-system](https://github.com/Guanyu-AI-prog/rag-agent-system)
+- **业务问题**：知识库规模翻十倍后，效果会不会塌、延迟会不会涨
+- **我做了什么**：合成 178 篇语料建 593 chunks 向量库 · 搭 50 题 × 5 维评测流水线 · 判定 Open WebUI 不适用后自建单文件前端 + SSE 透传代理
+- **结果**：语料规模 ×19 分数不掉 · 检索耗时仍 0.48s · 前端常驻 760MB → 31MB
+- **技术栈**：RAG · 混合检索 · 评测流水线 · SSE · systemd
+- **说明**：合成语料演示项目（品牌与商品虚构），语料 → 建库 → 评测 → 报告全流程可复现
+- **源码**：[beauty-cs-chat](https://github.com/Guanyu-AI-prog/beauty-cs-chat)
 
 ### 03 · 教务系统 AI 助手 · 知识库检索
 
@@ -62,7 +62,7 @@
 
 | 能力 | 证据 |
 |---|---|
-| RAG 与检索工程 | 准确率 65% → 85%，幻觉率 30% → 10%，响应 120 秒 → 8.3 秒 |
+| RAG 与检索工程 | 30 题 × 2 轮开卷评测：准确率 95%、幻觉率 5%；593 chunks 规模 ×19 后检索耗时仍 0.48s；分类型切分（250 / 300 / 500 字三档） |
 | 业务数据治理 | 168 人直写实缴零漂移，万行导入失败 0，三方核对净差精确对平 |
 | AI 落地与部署 | 30 分钟跑通 Agent SOP，80+ 操作截图已开源，方案获批推广至全员 |
 | 流程与内容自动化 | 每日 08:30 无人值守流水线，9 条工程踩坑固化，渲染管线 5,400 帧 / 143 秒 |
@@ -74,14 +74,24 @@
 - **幻觉是症状，不是病因** —— 生成前先判断片段能否支撑问题，幻觉率 30% → 10%
 - **100% 准确率是我自己改掉的** —— 改成 95% + 开卷标注，一次改完 28 处、11 个文件
 - **六个 AI 说它成了，我坚持说还没成** —— 后来 30 / 60 / 120 题可复跑评测才是真结论
+- **准确率 95%，店员还是不用** —— 电信客服 RAG 开卷评测准确率 95%，店员却因 AI 话术的合规风险弃用：上线与否的决定因素有时不在模型，在业务规则
 
 ## 技术栈
 
 - **AI / LLM**：RAG 检索增强生成、Agent 工具调用、Prompt Engineering、可回答性判断、评测体系
-- **检索**：BM25 + 向量混合召回、bge-large-zh-v1.5 / bge-reranker-v2-m3、RRF 融合、父子分块
+- **检索**：BM25 + 向量混合召回、bge-large-zh-v1.5 / bge-reranker-v2-m3、RRF 融合、父子分块、分类型切分
 - **后端**：Python、FastAPI、PostgreSQL、SQLAlchemy、Docker
 - **前端 / 构建**：Vue 3、Astro、Tailwind CSS、IBM Plex Mono
-- **运维**：Nginx、systemd、pg_dump 三重校验备份、Git 私有备份库、Agent 部署 SOP
+- **运维**：Nginx、systemd、pg_dump 三重校验备份、Git 私有备份库、限流 / 熔断 / 缓存 / 埋点、Agent 部署 SOP
+
+## 其他项目
+
+| 仓库 | 内容 |
+|---|---|
+| [rag-agent-system](https://github.com/Guanyu-AI-prog/rag-agent-system) | 纯 Python RAG + Agent 框架：混合检索、分类型切分、Agent 工具调用，附 20+ 份评测结果与 60 题 RAG vs Agent 对照报告（电信套餐客服项目） |
+| [Ailearner](https://github.com/Guanyu-AI-prog/Ailearner) | AI 学习引路人：评估 + 知识库 + 工具调用 + SSE 流式 |
+| [rag-systems-skill](https://github.com/Guanyu-AI-prog/rag-systems-skill) | 面向 Agent 的 RAG 系统技能库：检索、重排、评测方法论与生产避坑指南 |
+| [eval-files](https://github.com/Guanyu-AI-prog/eval-files) | RAG 评测题库与结果归档 |
 
 ## 联系我
 
