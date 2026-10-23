@@ -180,30 +180,31 @@ SOP 沉淀
 <div class="pr-8">
 <span class="text-sm font-mono" style="color:#2563eb">
 02</span>
-<h3 class="text-lg sm:text-xl font-bold text-gray-900 mt-1">电信套餐智能客服 · RAG 问答系统</h3>
+<h3 class="text-lg sm:text-xl font-bold text-gray-900 mt-1">美妆电商客服 RAG · 规模化与工程化</h3>
 </div>
 <div class="mt-4">
 <div class="text-[11px] font-semibold tracking-wide text-gray-400">业务问题</div>
-<p class="text-sm text-gray-700 mt-1">营业厅套餐咨询高度重复，人工应答效率低</p>
+<p class="text-sm text-gray-700 mt-1">知识库规模翻十倍后，效果会不会塌、延迟会不会涨</p>
 </div>
 <div class="mt-3">
 <div class="text-[11px] font-semibold tracking-wide text-gray-400">我做了什么</div>
-<p class="text-sm text-gray-600 mt-1 leading-relaxed">纯 Python 全链路零框架依赖 · 语义 + BM25 + Q&A 三路召回加重排序 · 生成前加入可回答性判断</p>
+<p class="text-sm text-gray-600 mt-1 leading-relaxed">合成 178 篇语料建 593 chunks 向量库 · 搭 50 题 × 5 维评测流水线 · 判定 Open WebUI 不适用后自建单文件前端 + SSE 透传代理</p>
 </div>
 <div class="grid grid-cols-3 gap-3 mt-5 pt-4 border-t border-gray-200">
-<div><div class="text-lg sm:text-xl font-bold text-gray-900 tabular-nums">95%</div><div class="text-[11px] text-gray-500 mt-1">问答准确率</div></div>
-<div><div class="text-lg sm:text-xl font-bold text-gray-900 tabular-nums">5%</div><div class="text-[11px] text-gray-500 mt-1">幻觉率</div></div>
-<div><div class="text-lg sm:text-xl font-bold text-gray-900 tabular-nums">8.3 秒</div><div class="text-[11px] text-gray-500 mt-1">平均响应（原 120 秒）</div></div>
+<div><div class="text-lg sm:text-xl font-bold text-gray-900 tabular-nums">593</div><div class="text-[11px] text-gray-500 mt-1">chunks · 规模 ×19 分数不掉</div></div>
+<div><div class="text-lg sm:text-xl font-bold text-gray-900 tabular-nums">0.48s</div><div class="text-[11px] text-gray-500 mt-1">检索耗时（规模涨后不变）</div></div>
+<div><div class="text-lg sm:text-xl font-bold text-gray-900 tabular-nums">31MB</div><div class="text-[11px] text-gray-500 mt-1">前端常驻（原 760MB）</div></div>
 </div>
 <div class="flex flex-wrap gap-1.5 mt-4">
-<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">FastAPI</span>
-<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">ChromaDB</span>
-<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">BM25 混合检索</span>
-<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">bge-reranker</span>
+<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">RAG</span>
+<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">混合检索</span>
+<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">评测流水线</span>
+<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">SSE</span>
+<span class="px-2.5 py-1 bg-gray-900 text-white rounded-md text-xs font-medium transition-all duration-300 group-hover:bg-gray-800">systemd</span>
 </div>
-<div class="flex flex-wrap gap-4 mt-3">
-<a href="https://8.163.104.229/rag/web" target="_blank" rel="noopener noreferrer" class="text-sm font-medium" style="color:#2563eb">在线体验</a>
-<a href="https://github.com/Guanyu-AI-prog/rag-agent-system" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">源码 · GitHub</a>
+<p class="text-[11px] text-gray-500 mt-3">合成语料演示项目（品牌与商品虚构），语料 → 建库 → 评测 → 报告全流程可复现</p>
+<div class="flex flex-wrap gap-4 mt-2">
+<a href="https://github.com/Guanyu-AI-prog/beauty-cs-chat" target="_blank" rel="noopener noreferrer" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">源码 · GitHub</a>
 </div>
 </div>
 </div>
@@ -318,9 +319,9 @@ SOP 沉淀
 <div class="p-5 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-lg hover:border-gray-300">
 <h3 class="text-base sm:text-lg font-semibold text-gray-900">RAG 与检索工程</h3>
 <div class="mt-3 space-y-1">
-<div class="text-sm text-gray-600 tabular-nums">准确率 65% → 85%</div>
-<div class="text-sm text-gray-600 tabular-nums">幻觉率 30% → 10%</div>
-<div class="text-sm text-gray-600 tabular-nums">响应 120 秒 → 8.3 秒</div>
+<div class="text-sm text-gray-600 tabular-nums">30 题 × 2 轮开卷评测：准确率 95%、幻觉率 5%</div>
+<div class="text-sm text-gray-600 tabular-nums">593 chunks 规模 ×19 后检索耗时仍 0.48s</div>
+<div class="text-sm text-gray-600 tabular-nums">分类型切分（250 / 300 / 500 字三档）</div>
 </div>
 </div>
 <div class="p-5 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-lg hover:border-gray-300">
@@ -386,6 +387,10 @@ SOP 沉淀
 <div class="p-5 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-lg hover:border-gray-300">
 <h3 class="text-base sm:text-lg font-semibold text-gray-900">六个 AI 说它成了，我坚持说还没成</h3>
 <p class="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">后来 30 / 60 / 120 题可复跑评测才是真结论。</p>
+</div>
+<div class="p-5 sm:p-6 bg-gray-50 rounded-xl border border-gray-200 transition-all duration-300 hover:bg-white hover:shadow-lg hover:border-gray-300 sm:col-span-2">
+<h3 class="text-base sm:text-lg font-semibold text-gray-900">准确率 95%，店员还是不用</h3>
+<p class="mt-2 text-sm sm:text-base text-gray-600 leading-relaxed">电信客服 RAG 开卷评测准确率 95%，店员却因 AI 话术的合规风险弃用 —— 上线与否的决定因素有时不在模型，在业务规则。</p>
 </div>
 </div>
 </div>
